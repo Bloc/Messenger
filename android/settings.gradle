@@ -1,0 +1,3 @@
+rootProject.name = 'BlocMessenger'
+
+include ':app'
