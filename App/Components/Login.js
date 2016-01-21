@@ -1,4 +1,6 @@
 import React from 'react-native';
+import api from './../Lib/Api';
+import MessageThreads from './MessageThreads';
 
 let {
   View,
@@ -58,6 +60,7 @@ export default class Login extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
+      api_token: '',
       username: '',
       password: '',
       isLoading: false,
@@ -82,25 +85,33 @@ export default class Login extends React.Component{
       isLoading: true
     });
 
-  api.getBio(this.state.username)
+    let user_info = {
+      email: this.state.username,
+      password: this.state.password,
+    }
+
+    api.getToken(user_info)
     .then((res) => {
-      if (res.message === 'Not Found') {
-        this.setState({
-          error: 'User not found',
-          isLoading: false
-        })
-      } else {
-        this.props.navigator.push({
-         title: res.name || "select an Option",
-          component: Dashboard,
-          passProps: {userInfo: res}
-        });
-        this.setState({
-          isLoading: false,
-          error: false,
-          username: ''
-        })
-      }
+      let full_name = `${res.user.first_name} ${res.user.last_name}`
+
+      this.props.navigator.replace({
+       title: full_name,
+        component: MessageThreads,
+      });
+
+      this.setState({
+        isLoading: false,
+        error: false,
+        email: '',
+        password: ''
+      })
+    })
+    .catch((error) => {
+      console.log(`error: ${error}`)
+      this.setState({
+        error: 'User not found',
+        isLoading: false
+      })
     });
 }
 
