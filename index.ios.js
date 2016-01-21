@@ -1,6 +1,5 @@
 import React from 'react-native';
 import Main from './App/Components/Main';
-import Login from './App/Components/Login';
 
 let {
   AppRegistry,
@@ -17,7 +16,7 @@ class BlocMessenger extends Component {
       <NavigatorIOS
       style={styles.container}
         initialRoute={{
-          title: 'Github NoteTaker',
+          title: 'Bloc Messenger',
           component: Main
         }} />
     );
