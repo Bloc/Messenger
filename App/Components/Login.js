@@ -1,6 +1,7 @@
 import React from 'react-native';
 import api from './../Lib/Api';
 import MessageThreads from './MessageThreads';
+import store from 'react-native-simple-store';
 
 let {
   View,
@@ -60,7 +61,7 @@ export default class Login extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      api_token: '',
+      auth_token: '',
       username: '',
       password: '',
       isLoading: false,
@@ -88,30 +89,32 @@ export default class Login extends React.Component{
     let user_info = {
       email: this.state.username,
       password: this.state.password,
-    }
+    };
 
-    api.getToken(user_info)
+    api.setToken(user_info)
     .then((res) => {
       let full_name = `${res.user.first_name} ${res.user.last_name}`
-
-      this.props.navigator.replace({
-       title: full_name,
-        component: MessageThreads,
-      });
 
       this.setState({
         isLoading: false,
         error: false,
-        email: '',
-        password: ''
-      })
+        username: '',
+        password: '',
+      });
+
+       // this.props.navigator.replace({
+       //  title: full_name,
+       //   component: MessageThreads,
+       //   passProps: { auth_token: res.auth_token }
+       // });
+
     })
     .catch((error) => {
       console.log(`error: ${error}`)
       this.setState({
         error: 'User not found',
-        isLoading: false
-      })
+        isLoading: false,
+      });
     });
 }
 

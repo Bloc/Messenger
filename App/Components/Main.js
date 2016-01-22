@@ -1,6 +1,7 @@
 import React from 'react-native';
 import Login from './Login';
 import MessageThreads from './MessageThreads';
+import store from 'react-native-simple-store';
 
 let {
   View,
@@ -14,13 +15,21 @@ export default class Main extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      api_token: '',
-    }
+      auth_token: '',
+    };
   }
 
+  checkForKey() {
+    store.get('session').then((session) => {
+      this.setState({
+        auth_token: session.auth_token
+      });
+    })
+    .catch((error) => console.log(`error: Not key found`));
+  }
   render() {
     return(
-     this.state.api_token === '' ? <Login /> : <MessageThreads />
+     this.state.auth_token === '' ? <Login navigator={this.props.navigator} /> : <MessageThreads />
     )
   }
 };

@@ -1,5 +1,7 @@
+import store from 'react-native-simple-store';
+
 let api = {
-  getToken(user_info) {
+  setToken(user_info) {
     let email = user_info['email'].toLowerCase().trim();
     let password = user_info['password'].toLowerCase().trim();
     let url = `https://www.bloc.io/api/v1/sessions`;
@@ -9,9 +11,16 @@ let api = {
       body: `email=${email}&password=${password}`,
     })
     .then((res) => {
-      return JSON.parse(res._bodyText);
+      let resBody = JSON.parse(res._bodyText);
+
+      store.save('session', {
+        token: resBody.auth_token,
+        current_user: resBody.user,
+      });
+
+      return resBody;
     })
-    .catch((error) => console.log('token creation error'));
+    .catch((error) => console.log('token creation failed'));
   },
 };
 

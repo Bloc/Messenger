@@ -6,6 +6,7 @@
     "start": "react-native start"
   },
   "dependencies": {
-    "react-native": "^0.18.1"
+    "react-native": "^0.18.1",
+    "react-native-simple-store": "^0.1.0"
   }
 }
