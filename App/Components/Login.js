@@ -95,19 +95,17 @@ export default class Login extends React.Component{
     .then((res) => {
       let full_name = `${res.user.first_name} ${res.user.last_name}`
 
+      this.props.navigator.replace({
+        title: full_name,
+        component: MessageThreads,
+      });
+
       this.setState({
         isLoading: false,
         error: false,
         username: '',
         password: '',
       });
-
-       // this.props.navigator.replace({
-       //  title: full_name,
-       //   component: MessageThreads,
-       //   passProps: { auth_token: res.auth_token }
-       // });
-
     })
     .catch((error) => {
       console.log(`error: ${error}`)

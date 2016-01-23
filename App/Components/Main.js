@@ -28,6 +28,8 @@ export default class Main extends React.Component{
     .catch((error) => console.log(`error: Not key found`));
   }
   render() {
+    this.checkForKey();
+
     return(
      this.state.auth_token === '' ? <Login navigator={this.props.navigator} /> : <MessageThreads />
     )

@@ -21,6 +21,23 @@ let styles = StyleSheet.create({
 });
 
 export default class Settings extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: ''
+    }
+  }
+
+  componentDidMount() {
+    store.get('session').then((res) => {
+      this.setState({
+        firstName: res.user.first_name,
+        lastName: res.user.last_name,
+      });
+    });
+  }
+
   logOut() {
     store.delete('session');
     this.props.navigator.replace({
@@ -30,10 +47,14 @@ export default class Settings extends React.Component{
   }
 
   render() {
+    // TODO: Make this actually show with css
+    let fullName = `${this.state.firstName} ${this.state.lastName}`
+
     return(
       <View style={styles.container}>
+        <Text style={styles.buttonText}> {fullName} </Text>
         <TouchableHighlight onPress={this.logOut.bind(this)}>
-          <Text style={styles.buttonText} >Log Out</Text>
+          <Text style={styles.buttonText} > Log Out </Text>
         </TouchableHighlight>
       </View>
     );
