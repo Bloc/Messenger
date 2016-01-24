@@ -126,11 +126,16 @@ export default class Login extends React.Component{
         <TextInput
           style={styles.searchInput}
           value={this.state.username}
+          autoCorrect={false}
           placeholder="Email"
+          autoCapitalize='none'
           onChange={this.handleEmailChange.bind(this)} />
         <TextInput
           style={styles.searchInput}
           value={this.state.password}
+          secureTextEntry={true}
+          autoCorrect={false}
+          autoCapitalize='none'
           placeholder="Password"
           onChange={this.handlePasswordChange.bind(this)} />
         <TouchableHighlight
