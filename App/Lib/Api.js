@@ -20,8 +20,24 @@ let api = {
 
       return resBody;
     })
-    .catch((error) => console.log('token creation failed'));
+    .catch((error) => console.log('token creation failure'));
   },
+
+  getMessages() {
+    store.get('session').then((session) => {
+      let auth_token = session.token;
+      let url = `https://www.bloc.io/message_threads`;
+      fetch(url, {
+        method: 'GET',
+        headers: auth_token,
+      })
+      .then((res) => {
+        console.info(`messages retrieved`)
+        console.log(res)
+      })
+      .catch((error) => console.log(`error: message load failure}`));
+    })
+  }
 };
 
 export default api;

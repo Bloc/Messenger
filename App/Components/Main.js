@@ -22,10 +22,9 @@ export default class Main extends React.Component{
   checkForKey() {
     store.get('session').then((session) => {
       this.setState({
-        auth_token: session.auth_token
+        auth_token: session.token
       });
     })
-    .catch((error) => console.log(`error: Not key found`));
   }
   render() {
     this.checkForKey();
