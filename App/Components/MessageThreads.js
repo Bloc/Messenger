@@ -11,10 +11,12 @@ let {
 
 let styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    height: 590,
+    height: 500,
+    marginTop: 65,
+  },
+  messagePlaceHolder: {
+    height: 500,
+    fontSize: 20,
     marginTop: 65,
   },
   rowContainer: {
@@ -79,9 +81,7 @@ export default class MessageThreads extends React.Component{
   render() {
     return (
       <View style={styles.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)} />
+        <Text style={styles.messagePlaceHolder}>Messages Are HERE!</Text>
       </View>
     );
   }
