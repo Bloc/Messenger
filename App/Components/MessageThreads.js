@@ -12,7 +12,11 @@ let {
 let styles = StyleSheet.create({
   container: {
     height: 500,
-    backgroundColor: 'red',
+    marginTop: 65,
+  },
+  messagePlaceHolder: {
+    height: 500,
+    fontSize: 20,
     marginTop: 65,
   },
 });
@@ -50,6 +54,7 @@ export default class MessageThreads extends React.Component{
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.messagePlaceHolder}>Messages Are HERE!</Text>
       </View>
     );
   }
