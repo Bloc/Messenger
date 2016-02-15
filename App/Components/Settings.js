@@ -17,6 +17,10 @@ let styles = StyleSheet.create({
   buttonText: {
     color: 'red',
     fontSize: 50,
+  },
+  name: {
+    color: 'blue',
+    fontSize: 30,
   }
 });
 
@@ -46,13 +50,13 @@ export default class Settings extends React.Component{
     });
   }
 
-  render() {
-    // TODO: Make this actually show with css
-    let fullName = `${this.state.firstName} ${this.state.lastName}`
+  fullName() {
+    return (`${this.state.firstName} ${this.state.lastName}`);
+  }
 
+  render() {
     return(
       <View style={styles.container}>
-        <Text style={styles.buttonText}> {fullName} </Text>
         <TouchableHighlight onPress={this.logOut.bind(this)}>
           <Text style={styles.buttonText} > Log Out </Text>
         </TouchableHighlight>

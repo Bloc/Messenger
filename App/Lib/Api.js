@@ -24,8 +24,8 @@ let api = {
   },
 
   fakeIt() {
-    return {
-      items: [
+    return Promise.all(
+      [
         {
           id: 1,
           subject: 'Hey there',
@@ -48,18 +48,17 @@ let api = {
           last_name: 'Paxton',
           unread: true
         },
-      ],
-      count: 2
-    }
+      ]
+    );
   },
 
   getMessages() {
     store.get('session').then((session) => {
       let auth_token = session.token;
-      let url = `https://www.bloc.io/message_threads`;
+      let url = `https://www.bloc.io/api/v1/message_threads/?page=1"`;
       fetch(url, {
-        method: 'GET',
-        headers: auth_token,
+        method: 'POST',
+        body: auth_token,
       })
       .then((res) => {
         console.info(`messages retrieved`)

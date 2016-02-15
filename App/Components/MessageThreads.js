@@ -36,30 +36,26 @@ export default class MessageThreads extends React.Component{
     this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
     this.state = {
       isLoading: true,
-      data: '',
-      empty: false,
+      empty: true,
       error: '',
+      rawData: {},
     }
   }
 
   componentDidMount() {
-    this.fetchFakeData();
-  }
-
-  fetchFakeData() {
-    let data = api.fakeIt();
-
-    this.setState({
-      data: data.items,
-      dataSource: this.ds.cloneWithRows(data.items),
-      isLoading: false,
-      empty: false,
-     });
+    this.fetchMessages();
   }
 
   fetchMessages() {
-    // TODO: add when fake data works
     api.getMessages()
+    .then((res) => {
+      this.setState({
+        isLoading: false,
+        empty: false,
+        data: res,
+      });
+      console.log(`yes: ${res}`);
+    })
     .catch((error) => console.log('NOOOO'));
   }
 
