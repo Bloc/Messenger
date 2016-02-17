@@ -23,7 +23,7 @@ let api = {
     .catch((error) => console.log('token creation failure'));
   },
 
-  getMessages() {
+  getMessageThreads() {
     return store.get('session').then((session) => {
       let auth_token = session.token;
       let url = `https://www.bloc.io/api/v1/message_threads`;

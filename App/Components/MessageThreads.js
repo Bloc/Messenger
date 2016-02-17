@@ -12,41 +12,8 @@ let {
   Image
 } = React;
 
-let styles = StyleSheet.create({
-  container: {
-    height: 500,
-    marginTop: 65,
-  },
-  rowContainer: {
-    flexDirection: 'row',
-  },
-  preview: {
-    fontSize: 10,
-    fontStyle: 'italic',
-    paddingTop: 5,
-    paddingBottom: 5,
-  },
-  subject: {
-    fontSize: 18,
-    paddingBottom: 5,
-  },
-  name: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    paddingBottom: 5,
-  },
-  leftCol: {
-    paddingLeft: 8,
-    flex: 5,
-  },
-  rightCol: {
-    padding: 5,
-    flex: 1,
-  },
-});
-
-export default class MessageThreads extends React.Component{
-  constructor(props){
+export default class MessageThreads extends React.Component {
+  constructor(props) {
     super(props);
 
     this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
@@ -62,7 +29,7 @@ export default class MessageThreads extends React.Component{
   }
 
   fetchMessages() {
-    api.getMessages()
+    api.getMessageThreads()
     .then((data) => {
       this.setState({
         dataSource: this.ds.cloneWithRows(data),
@@ -120,3 +87,36 @@ export default class MessageThreads extends React.Component{
     );
   }
 };
+
+let styles = StyleSheet.create({
+  container: {
+    height: 500,
+    marginTop: 65,
+  },
+  rowContainer: {
+    flexDirection: 'row',
+  },
+  preview: {
+    fontSize: 10,
+    fontStyle: 'italic',
+    paddingTop: 5,
+    paddingBottom: 5,
+  },
+  subject: {
+    fontSize: 18,
+    paddingBottom: 5,
+  },
+  name: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    paddingBottom: 5,
+  },
+  leftCol: {
+    paddingLeft: 8,
+    flex: 5,
+  },
+  rightCol: {
+    padding: 5,
+    flex: 1,
+  },
+});
