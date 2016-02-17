@@ -24,22 +24,21 @@ let api = {
   },
 
   getMessages() {
-    store.get('session').then((session) => {
+    return store.get('session').then((session) => {
       let auth_token = session.token;
       let url = `https://www.bloc.io/api/v1/message_threads`;
-      // let url = `http://localhost:3000/api/v1/message_threads.json`;
       let init = {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${auth_token}`
         }
       };
-      fetch(url, init)
+      return fetch(url, init)
       .then((res) => {
-        console.info(`messages retrieved`)
-        console.log(res)
+        let resBody = JSON.parse(res._bodyText);
+        return resBody.items;
       })
-      .catch((error) => console.log(`error: message load failure}`));
+      .catch((error) => console.log(`error: ${error}`));
     })
   }
 };

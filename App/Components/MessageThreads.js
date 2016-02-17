@@ -35,10 +35,9 @@ export default class MessageThreads extends React.Component{
 
     this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
     this.state = {
-      isLoading: true,
-      empty: true,
-      error: '',
       rawData: {},
+      dataSource: this.ds,
+      threadId: ''
     }
   }
 
@@ -48,15 +47,13 @@ export default class MessageThreads extends React.Component{
 
   fetchMessages() {
     api.getMessages()
-    .then((res) => {
+    .then((data) => {
       this.setState({
-        isLoading: false,
-        empty: false,
-        data: res,
+        dataSource: this.ds.cloneWithRows(data),
+        rawData: data,
       });
-      console.log(`yes: ${res}`);
     })
-    .catch((error) => console.log('NOOOO'));
+    .catch((error) => console.log(`error: ${error}`));
   }
 
   renderRow(rowData) {
@@ -70,14 +67,12 @@ export default class MessageThreads extends React.Component{
     );
   }
 
-  stopHere() {
-    debugger;
-  }
-
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.messagePlaceHolder}>Messages Are HERE!</Text>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow.bind(this)} />
       </View>
     );
   }
