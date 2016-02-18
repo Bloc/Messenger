@@ -28,9 +28,10 @@ export default class Main extends React.Component{
   }
   render() {
     this.checkForKey();
+    let {navigator} = this.props;
 
     return(
-     this.state.auth_token === '' ? <Login navigator={this.props.navigator} /> : <MessageThreads />
+     this.state.auth_token === '' ? <Login navigator={navigator} /> : <MessageThreads navigator={navigator} />
     )
   }
 };

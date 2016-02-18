@@ -17,11 +17,9 @@ let styles = StyleSheet.create({
   buttonText: {
     color: 'red',
     fontSize: 50,
+    textAlign: 'center',
+    backgroundColor: '#dcdcdc',
   },
-  name: {
-    color: 'blue',
-    fontSize: 30,
-  }
 });
 
 export default class Settings extends React.Component{
@@ -48,10 +46,6 @@ export default class Settings extends React.Component{
       title: 'Login',
       component: Login
     });
-  }
-
-  fullName() {
-    return (`${this.state.firstName} ${this.state.lastName}`);
   }
 
   render() {

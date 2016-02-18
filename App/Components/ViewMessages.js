@@ -1,18 +1,17 @@
 import React from 'react-native';
-import ViewMessages from './ViewMessages';
-import Separator from './../Helpers/Separator';
 import api from './../Lib/Api';
 
 let {
   View,
   StyleSheet,
   Text,
-  ListView,
   TouchableHighlight,
-  Image
+  PropTypes,
+  ListView,
+  Image,
 } = React;
 
-export default class MessageThreads extends React.Component {
+export default class ViewMessage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -24,52 +23,44 @@ export default class MessageThreads extends React.Component {
     }
   }
 
+  static propTypes = {
+    id: PropTypes.number,
+  };
+
   componentDidMount() {
-    this.fetchThread();
+    let {id} = this.props
+    this.fetchMessages(id);
   }
 
-  fetchThread() {
-    api.getMessageThreads()
+  fetchMessages(id) {
+    api.getMessagesForThread(id)
     .then((data) => {
+      console.log(data);
       this.setState({
         dataSource: this.ds.cloneWithRows(data),
         rawData: data,
       });
     })
-    .catch((error) => console.log(`error: ${error}`));
-  }
-
-  viewMessages(rowData) {
-    this.props.navigator.push({
-      component: ViewMessages,
-      title: rowData.subject,
-      passProps: {
-        id: rowData.id,
-      }
-    });
+    .catch((error) => console.log(`fetchMessages error: ${error}`));
   }
 
   renderRow(rowData) {
     let name = `${rowData.first_name} ${rowData.last_name}`
 
     return (
-      <TouchableHighlight
-          underlayColor='rgba(192,192,192,1,0.6)'
-          onPress={() => this.viewMessages(rowData)} >
-        <View>
-          <View style={styles.rowContainer}>
-            <View style={styles.leftCol}>
-              <Text style={styles.preview}> {rowData.preview} </Text>
-              <Text style={styles.name}> {name} </Text>
-              <Text style={styles.subject}> {rowData.subject} </Text>
-            </View>
-            <View style={styles.rightCol}>
-              <Image style={{width: 60, height: 60}} source={{uri: rowData.user_image}} />
-            </View>
+      <View>
+        <View style={styles.rowContainer}>
+          <View style={styles.leftCol}>
+            <Text style={styles.preview}> {rowData.preview} </Text>
+            <Text style={styles.name}> {name} </Text>
+            <Text style={styles.subject}> {rowData.subject} </Text>
           </View>
-          <Separator />
+          <View style={styles.rightCol}>
+            <Image style={{width: 60, height: 60}} source={{uri: rowData.user_image}} />
+          </View>
         </View>
-      </TouchableHighlight>
+        <Separator />
+      </View>
     );
   }
 
@@ -78,15 +69,14 @@ export default class MessageThreads extends React.Component {
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)} />
+          renderRow={() => this.renderRow(this)} />
       </View>
     );
   }
-};
+}
 
 let styles = StyleSheet.create({
   container: {
-    height: 500,
     marginTop: 65,
   },
   rowContainer: {
