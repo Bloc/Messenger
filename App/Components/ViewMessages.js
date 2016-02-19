@@ -1,5 +1,6 @@
 import React from 'react-native';
 import api from './../Lib/Api';
+import Separator from './../Helpers/Separator';
 
 let {
   View,
@@ -35,7 +36,6 @@ export default class ViewMessage extends React.Component {
   fetchMessages(id) {
     api.getMessagesForThread(id)
     .then((data) => {
-      console.log(data);
       this.setState({
         dataSource: this.ds.cloneWithRows(data),
         rawData: data,
@@ -45,18 +45,16 @@ export default class ViewMessage extends React.Component {
   }
 
   renderRow(rowData) {
-    let name = `${rowData.first_name} ${rowData.last_name}`
+    let name = `${rowData.user.name}`
 
     return (
       <View>
         <View style={styles.rowContainer}>
           <View style={styles.leftCol}>
-            <Text style={styles.preview}> {rowData.preview} </Text>
-            <Text style={styles.name}> {name} </Text>
-            <Text style={styles.subject}> {rowData.subject} </Text>
+            <Text style={styles.message}> {rowData.body} </Text>
           </View>
           <View style={styles.rightCol}>
-            <Image style={{width: 60, height: 60}} source={{uri: rowData.user_image}} />
+            <Text style={styles.name}>{name}</Text>
           </View>
         </View>
         <Separator />
@@ -69,7 +67,7 @@ export default class ViewMessage extends React.Component {
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={() => this.renderRow(this)} />
+          renderRow={this.renderRow.bind(this)} />
       </View>
     );
   }
@@ -77,24 +75,21 @@ export default class ViewMessage extends React.Component {
 
 let styles = StyleSheet.create({
   container: {
-    marginTop: 65,
+    flex: 1,
   },
   rowContainer: {
-    flexDirection: 'row',
-  },
-  preview: {
-    fontSize: 10,
-    fontStyle: 'italic',
     paddingTop: 5,
     paddingBottom: 5,
-  },
-  subject: {
-    fontSize: 18,
-    paddingBottom: 5,
+    flexDirection: 'column',
   },
   name: {
     fontSize: 14,
     fontWeight: 'bold',
+    paddingBottom: 5,
+    textAlign: 'right',
+  },
+  message: {
+    fontSize: 14,
     paddingBottom: 5,
   },
   leftCol: {
@@ -102,7 +97,7 @@ let styles = StyleSheet.create({
     flex: 5,
   },
   rightCol: {
-    padding: 5,
+    paddingRight: 5,
     flex: 1,
   },
 });

@@ -1,4 +1,5 @@
 import store from 'react-native-simple-store';
+import {find} from 'lodash';
 
 let api = {
   setToken(user_info) {
@@ -26,7 +27,8 @@ let api = {
   getMessagesForThread(id) {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
+      // let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
+      let url = `http://localhost:3000/api/v1/message_threads/index_with_messages`;
       let init = {
         method: 'GET',
         headers: {
@@ -37,8 +39,7 @@ let api = {
       return fetch(url, init)
       .then((res) => {
         let items = JSON.parse(res._bodyText).items;
-        console.log(res);
-        let messages = items.messages.filter({id: id});
+        let messages = find(items, {id: id}).messages;
         return messages;
       })
       .catch((error) => console.log(`API messages error: ${error}`));
@@ -48,7 +49,8 @@ let api = {
   getMessageThreads() {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      let url = `https://www.bloc.io/api/v1/message_threads`;
+      // let url = `https://www.bloc.io/api/v1/message_threads`;
+      let url = `http://localhost:3000/api/v1/message_threads`;
       let init = {
         method: 'GET',
         headers: {
