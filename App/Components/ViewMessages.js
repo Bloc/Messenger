@@ -1,6 +1,7 @@
 import React from 'react-native';
 import api from './../Lib/Api';
 import Separator from './../Helpers/Separator';
+import Form from './NewMessageForm';
 
 let {
   View,
@@ -9,7 +10,6 @@ let {
   TouchableHighlight,
   PropTypes,
   ListView,
-  Image,
 } = React;
 
 export default class ViewMessage extends React.Component {
@@ -63,11 +63,14 @@ export default class ViewMessage extends React.Component {
   }
 
   render() {
+    let {id} = this.props
+
     return (
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)} />
+        <Form id={id} />
       </View>
     );
   }
