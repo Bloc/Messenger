@@ -43,13 +43,13 @@ let api = {
         headers: {
           'Authorization': `Bearer ${auth_token}`
         },
-        body: body,
+        body: JSON.stringify(body),
       };
 
-      console.log(body);
 
-      return fetch(url, init)
-      .then((res) => console.log(`Message: ${res}`));
+      fetch(url, init)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(`Send Message error: ${error}`));
     });
 
   },
