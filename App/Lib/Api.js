@@ -33,10 +33,10 @@ let api = {
     store.get('session').then((session) => {
       let auth_token = session.token;
       let user = session.current_user;
-      // let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
-      let url = `http://localhost:3000/api/v1/messages`;
+      let url = `https://www.bloc.io/api/v1/messages`;
 
       body['user_id'] = user.id;
+      body['sender'] = user.email;
 
       let init = {
         method: 'POST',
@@ -46,17 +46,18 @@ let api = {
         body: body,
       };
 
-      fetch(url, init)
+      console.log(body);
+
+      return fetch(url, init)
+      .then((res) => console.log(`Message: ${res}`));
     });
 
-    console.log('success');
   },
 
   getMessagesForThread(id) {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      // let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
-      let url = `http://localhost:3000/api/v1/message_threads/index_with_messages`;
+      let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
       let init = {
         method: 'GET',
         headers: {
@@ -77,8 +78,7 @@ let api = {
   getMessageThreads() {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      // let url = `https://www.bloc.io/api/v1/message_threads`;
-      let url = `http://localhost:3000/api/v1/message_threads`;
+      let url = `https://www.bloc.io/api/v1/message_threads`;
       let init = {
         method: 'GET',
         headers: {

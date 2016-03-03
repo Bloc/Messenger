@@ -30,7 +30,7 @@ export default class NewMessageForm extends React.Component {
         <TextInput style={styles.form}
            value={this.state.messageText}
            multiline={true}
-           onLayout={0,0,300,10}
+           onLayout={() => 0,0,300,10}
            placeholder="Send a message"
            onChange={this.setMessageText.bind(this, id)}
            />
