@@ -1,5 +1,6 @@
 import React from 'react-native';
 import api from './../Lib/Api';
+import moment from 'moment';
 
 const {
   Image,
@@ -84,6 +85,7 @@ export default class ViewMessage extends React.Component {
   renderRow(rowData) {
     const name = `${rowData.user.name}`;
     const userImage = rowData.user.profile_photo;
+    const time = moment(rowData.created_at, "YYYYMMDD").fromNow();
 
     return (
       <View>
@@ -96,7 +98,7 @@ export default class ViewMessage extends React.Component {
             <Text style={styles.message}> {rowData.body} </Text>
           </View>
           <View style={styles.rightCol}>
-            <Text style={styles.message}> {rowData.created_at} </Text>
+            <Text style={styles.message}>{time}</Text>
           </View>
         </View>
       </View>
