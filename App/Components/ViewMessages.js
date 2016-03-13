@@ -9,7 +9,6 @@ let {
   TouchableHighlight,
   PropTypes,
   ListView,
-  Image,
 } = React;
 
 export default class ViewMessage extends React.Component {
@@ -63,6 +62,8 @@ export default class ViewMessage extends React.Component {
   }
 
   render() {
+    let {id} = this.props
+
     return (
       <View style={styles.container}>
         <ListView

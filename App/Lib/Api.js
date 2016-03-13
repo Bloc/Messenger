@@ -24,11 +24,40 @@ let api = {
     .catch((error) => console.log('token creation failure'));
   },
 
+  sendMessage(id=null, text) {
+    let body = {
+      token: id,
+      'stripped-text': text,
+    };
+
+    store.get('session').then((session) => {
+      let auth_token = session.token;
+      let user = session.current_user;
+      let url = `https://www.bloc.io/api/v1/messages`;
+
+      body['user_id'] = user.id;
+      body['sender'] = user.email;
+
+      let init = {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${auth_token}`
+        },
+        body: JSON.stringify(body),
+      };
+
+
+      fetch(url, init)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(`Send Message error: ${error}`));
+    });
+
+  },
+
   getMessagesForThread(id) {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      // let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
-      let url = `http://localhost:3000/api/v1/message_threads/index_with_messages`;
+      let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
       let init = {
         method: 'GET',
         headers: {
@@ -49,8 +78,7 @@ let api = {
   getMessageThreads() {
     return store.get('session').then((session) => {
       let auth_token = session.token;
-      // let url = `https://www.bloc.io/api/v1/message_threads`;
-      let url = `http://localhost:3000/api/v1/message_threads`;
+      let url = `https://www.bloc.io/api/v1/message_threads`;
       let init = {
         method: 'GET',
         headers: {
