@@ -4,12 +4,12 @@ import Separator from './../Helpers/Separator';
 import api from './../Lib/Api';
 
 const {
-  View,
+  Image,
+  ListView,
   StyleSheet,
   Text,
-  ListView,
   TouchableHighlight,
-  Image
+  View,
 } = React;
 
 const styles = StyleSheet.create({
@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     width: 60,
   },
   leftCol: {
-    flex: 5,
-    paddingLeft: 8,
+    flex: 1,
+    padding: 5,
   },
   name: {
     color: '#A9A9A9',
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   rightCol: {
-    flex: 1,
-    padding: 5,
+    flex: 5,
+    paddingLeft: 8,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -95,10 +95,10 @@ export default class MessageThreads extends React.Component {
         onPress={() => this.viewMessages(rowData)}>
         <View>
           <View style={styles.rowContainer}>
-            <View style={styles.rightCol}>
+            <View style={styles.leftCol}>
               <Image style={styles.image} source={{uri: rowData.user_image}} />
             </View>
-            <View style={styles.leftCol}>
+            <View style={styles.rightCol}>
               <Text style={styles.preview}> {rowData.preview} </Text>
               <Text style={styles.name}> {name} </Text>
             </View>

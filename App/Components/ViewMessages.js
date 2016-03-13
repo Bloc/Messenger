@@ -1,41 +1,51 @@
 import React from 'react-native';
 import api from './../Lib/Api';
-import Separator from './../Helpers/Separator';
 
 const {
+  Image,
+  ListView,
+  PropTypes,
+  Text,
   View,
   StyleSheet,
-  Text,
-  PropTypes,
-  ListView,
 } = React;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  rowContainer: {
-    paddingTop: 5,
-    paddingBottom: 5,
-    flexDirection: 'column',
+  leftCol: {
+    marginLeft: 15,
+    marginRight: 0,
+    flex: 1,
+  },
+  image: {
+    borderRadius: 20,
+    height: 40,
+    width: 40,
+  },
+  message: {
+    fontSize: 14,
+    paddingTop: 10,
   },
   name: {
     fontSize: 14,
     fontWeight: 'bold',
     paddingBottom: 5,
-    textAlign: 'right',
   },
-  message: {
-    fontSize: 14,
-    paddingBottom: 5,
-  },
-  leftCol: {
-    paddingLeft: 8,
-    flex: 5,
+  middleCol: {
+    marginLeft: 20,
+    flex: 6,
   },
   rightCol: {
-    paddingRight: 5,
-    flex: 1,
+    marginTop: -24,
+    marginLeft: 20,
+    flex: 6,
+  },
+  rowContainer: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    flexDirection: 'row',
   },
 });
 
@@ -73,18 +83,22 @@ export default class ViewMessage extends React.Component {
 
   renderRow(rowData) {
     const name = `${rowData.user.name}`;
+    const userImage = rowData.user.profile_photo;
 
     return (
       <View>
         <View style={styles.rowContainer}>
           <View style={styles.leftCol}>
+            <Image style={styles.image} source={{uri: userImage}} />
+          </View>
+          <View style={styles.middleCol}>
+            <Text style={styles.name}>{name}</Text>
             <Text style={styles.message}> {rowData.body} </Text>
           </View>
           <View style={styles.rightCol}>
-            <Text style={styles.name}>{name}</Text>
+            <Text style={styles.message}> {rowData.created_at} </Text>
           </View>
         </View>
-        <Separator />
       </View>
     );
   }
