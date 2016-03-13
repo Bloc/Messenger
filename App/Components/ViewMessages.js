@@ -1,7 +1,6 @@
 import React from 'react-native';
 import api from './../Lib/Api';
 import Separator from './../Helpers/Separator';
-import Form from './NewMessageForm';
 
 let {
   View,
@@ -70,7 +69,6 @@ export default class ViewMessage extends React.Component {
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow.bind(this)} />
-        <Form id={id} />
       </View>
     );
   }
