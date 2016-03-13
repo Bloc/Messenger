@@ -1,6 +1,6 @@
 import React from 'react-native';
 
-let {
+const {
   View,
   StyleSheet,
   Text,
@@ -8,11 +8,15 @@ let {
   PropTypes,
 } = React;
 
+const styles = StyleSheet.create({
+  container: {},
+});
+
 export default class Message extends React.Component {
   constructor(props) {
     super(props)
 
-    let {message} = this.props;
+    const {message} = this.props;
   }
 
   static propTypes = {
@@ -24,7 +28,3 @@ export default class Message extends React.Component {
     );
   }
 }
-
-let styles = StyleSheet.create({
-  container: {},
-});
