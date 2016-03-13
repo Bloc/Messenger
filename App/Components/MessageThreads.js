@@ -18,37 +18,34 @@ const styles = StyleSheet.create({
     marginTop: 65,
   },
   image: {
-    marginLeft: 10,
-    marginRight: 10,
-    width: 60,
-    height: 60,
     borderRadius: 30,
+    height: 60,
+    marginLeft: 10,
+    marginRight: 15,
+    width: 60,
   },
   leftCol: {
-    paddingLeft: 8,
     flex: 5,
+    paddingLeft: 8,
   },
   name: {
+    color: '#A9A9A9',
     fontSize: 14,
-    fontWeight: 'bold',
+    fontStyle: 'italic',
     paddingBottom: 5,
+    paddingTop: 5,
   },
   preview: {
-    fontSize: 10,
-    fontStyle: 'italic',
-    paddingTop: 5,
-    paddingBottom: 5,
+    fontSize: 14,
+    fontWeight: 'bold',
+    paddingTop: 15,
   },
   rightCol: {
-    padding: 5,
     flex: 1,
+    padding: 5,
   },
   rowContainer: {
     flexDirection: 'row',
-  },
-  subject: {
-    fontSize: 18,
-    paddingBottom: 5,
   },
 });
 
@@ -104,7 +101,6 @@ export default class MessageThreads extends React.Component {
             <View style={styles.leftCol}>
               <Text style={styles.preview}> {rowData.preview} </Text>
               <Text style={styles.name}> {name} </Text>
-              <Text style={styles.subject}> {rowData.subject} </Text>
             </View>
           </View>
           <Separator />
