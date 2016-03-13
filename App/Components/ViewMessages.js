@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   leftCol: {
     marginLeft: 15,
-    marginRight: 0,
+    marginRight: 10,
     flex: 1,
   },
   image: {
@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
   },
   middleCol: {
     marginLeft: 20,
-    flex: 6,
+    flex: 8,
   },
   rightCol: {
-    marginTop: -24,
-    marginLeft: 20,
-    flex: 6,
+    marginTop: -9,
+    paddingLeft: 80,
+    flex: 4,
   },
   rowContainer: {
     paddingTop: 10,
