@@ -1,9 +1,20 @@
 # Bloc Messenger
 
-This is a project with a sole purpose of being a side hustle.
+This is a project with the sole purpose of being a side hustle.
 - This is not on the Outcomes Roadmap
 - This should be thought of as an Open Source Project in a Private Repo
 - This project is not open to Student contributions at this time
+
+# Issues/Feature Requests
+
+## Issues Reporting
+
+Github will be the platform to [report issues](https://github.com/bdougie/BlocMessenger/issues/new) and bugs. *PRs are welcomed
+
+## Feature Requests
+
+Feature can be requested through the [Github Issue creation](https://github.com/bdougie/BlocMessenger/issues/new) as well.
+
 
 # Setup
 required dependencies
