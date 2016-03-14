@@ -1,24 +1,23 @@
 import React from 'react-native';
 
-let {
+const {
   View,
   StyleSheet,
-  Text,
 } = React;
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   separator: {
-    height: 1,
-    width: 400,
     backgroundColor: '#E4E4E4',
+    height: 1,
     marginLeft: 15,
+    width: 400,
   },
 });
 
-export default class Separator extends React.Component{
+export default class Separator extends React.Component {
   render() {
     return (
       <View style={styles.separator} />
     );
   }
-};
+}
