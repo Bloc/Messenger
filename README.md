@@ -7,13 +7,10 @@ This is a project with the sole purpose of being a side hustle.
 
 # Issues/Feature Requests
 
-## Issues Reporting
-
-Github will be the platform to [report issues](https://github.com/bdougie/BlocMessenger/issues/new) and bugs. *PRs are welcomed
-
-## Feature Requests
-
-Feature can be requested through the [Github Issue creation](https://github.com/bdougie/BlocMessenger/issues/new) as well.
+- Github will be the platform to [report issues](https://github.com/bdougie/BlocMessenger/issues/new) and bugs (*PRs are welcomed).
+- Feature can be requested through the [Github Issue creation](https://github.com/bdougie/BlocMessenger/issues/new) as well.
+- Please do not report bugs through the Bloc Platform reporting tools or Phabricator, as this is not a sanctioned Bloc app and will not be maintained during regualr develop time. 
+- Feel free to reach to the repo owner for questions
 
 
 # Setup
