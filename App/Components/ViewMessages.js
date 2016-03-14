@@ -85,7 +85,7 @@ export default class ViewMessage extends React.Component {
   renderRow(rowData) {
     const name = `${rowData.user.name}`;
     const userImage = rowData.user.profile_photo;
-    const time = moment(rowData.created_at, "YYYYMMDD").fromNow();
+    const time = moment(rowData.created_at, 'YYYYMMDD').fromNow();
 
     return (
       <View>
@@ -110,7 +110,8 @@ export default class ViewMessage extends React.Component {
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)} />
+          renderRow={this.renderRow}
+        />
       </View>
     );
   }

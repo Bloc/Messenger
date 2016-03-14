@@ -6,6 +6,7 @@ import api from './../Lib/Api';
 const {
   Image,
   ListView,
+  PropTypes,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -61,6 +62,11 @@ export default class MessageThreads extends React.Component {
     };
   }
 
+  static propTypes = {
+    navigator: PropTypes.object,
+  };
+
+
   componentDidMount() {
     this.fetchThread();
   }
@@ -73,7 +79,7 @@ export default class MessageThreads extends React.Component {
         rawData: data,
       });
     })
-    .catch((error) => console.log(`error: ${error}`));
+    .catch((error) => console.error(`error: ${error}`));
   }
 
   viewMessages(rowData) {
@@ -88,11 +94,13 @@ export default class MessageThreads extends React.Component {
 
   renderRow(rowData) {
     const name = `${rowData.first_name} ${rowData.last_name}`;
+    const viewMessage = () => this.viewMessages(rowData);
 
     return (
       <TouchableHighlight
         underlayColor="rgba(192,192,192,1,0.6)"
-        onPress={() => this.viewMessages(rowData)}>
+        onPress={viewMessage}
+      >
         <View>
           <View style={styles.rowContainer}>
             <View style={styles.leftCol}>
@@ -110,11 +118,14 @@ export default class MessageThreads extends React.Component {
   }
 
   render() {
+    const row = this.renderRow.bind(this);
+
     return (
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={this.renderRow.bind(this)} />
+          renderRow={row}
+        />
       </View>
     );
   }
