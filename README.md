@@ -14,10 +14,10 @@ This is a project with the sole purpose of being a side hustle.
 
 
 # Setup
-required dependencies
-npm 3 or greater
-node 4.1 or greater
-Xcode 7.2.1
+required dependencies:
+- npm 3 or greater
+- node 4.1 or greater
+- Xcode 7.2.1
 
 ```
 $ npm install reactive-native-cli -g
