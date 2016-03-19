@@ -1,7 +1,6 @@
 import React from 'react-native';
 
-let {
-  View,
+const {
   Text,
 } = React;
 
@@ -14,8 +13,9 @@ export default class RenderedHTML extends React.Component{
     return (
       <Text
         className='RenderedHTML'
-        dangerouslySetInnerHTML={this.createMarkUp()} />
+        dangerouslySetInnerHTML={this.createMarkUp()}
+      />
 
     );
   }
-};
+}

@@ -66,7 +66,6 @@ export default class MessageThreads extends React.Component {
     navigator: PropTypes.object,
   };
 
-
   componentDidMount() {
     this.fetchThread();
   }

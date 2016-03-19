@@ -1,18 +1,18 @@
 import React from 'react-native';
 import api from './../Lib/Api';
 import MessageThreads from './MessageThreads';
-import store from 'react-native-simple-store';
 
-let {
-  View,
-  Text,
+const {
+  ActivityIndicatorIOS,
+  PropTypes,
   StyleSheet,
+  Text,
   TextInput,
   TouchableHighlight,
-  ActivityIndicatorIOS
+  View,
 } = React;
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     padding: 30,
@@ -57,7 +57,7 @@ let styles = StyleSheet.create({
   },
 });
 
-export default class Login extends React.Component{
+export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,19 +66,23 @@ export default class Login extends React.Component{
       password: '',
       isLoading: false,
       error: false
-    }
+    };
   }
+
+  static propTypes = {
+    navigator: PropTypes.object,
+  };
 
   handleEmailChange(event) {
     this.setState({
       username: event.nativeEvent.text
-    })
+    });
   }
 
   handlePasswordChange(event) {
     this.setState({
       password: event.nativeEvent.text
-    })
+    });
   }
 
   handleSubmit() {
@@ -86,17 +90,17 @@ export default class Login extends React.Component{
       isLoading: true
     });
 
-    let user_info = {
+    const userInfo = {
       email: this.state.username,
       password: this.state.password,
     };
 
-    api.setToken(user_info)
+    api.setToken(userInfo)
     .then((res) => {
-      let full_name = `${res.user.first_name} ${res.user.last_name}`
+      const fullName = `${res.user.first_name} ${res.user.last_name}`;
 
       this.props.navigator.resetTo({
-        title: full_name,
+        title: fullName,
         component: MessageThreads,
       });
 
@@ -108,48 +112,54 @@ export default class Login extends React.Component{
       });
     })
     .catch((error) => {
-      console.log(`error: ${error}`)
       this.setState({
         error: 'User not found',
         isLoading: false,
       });
     });
-}
+  }
 
   render() {
-    let showErr = (
-      this.state.error ? <Text> {this.state.error} </Text> : <View></View>
+    const _handleSubmit = this.handleSubmit;
+    const _handleEmailChange = this.handleEmailChange;
+    const _handlePasswordChange = this.handlePasswordChange;
+    const showErr = (
+      this.state.error ? <Text> {this.state.error} </Text> : <View />
     );
-    return(
+    return (
       <View style={styles.mainContainer}>
       <Text style={styles.title}> Login using your Bloc.io username and password</Text>
         <TextInput
           style={styles.searchInput}
           value={this.state.username}
           autoCorrect={false}
-          placeholder="Email"
+          placeholder='Email'
           autoCapitalize='none'
-          onChange={this.handleEmailChange.bind(this)} />
+          onChange={_handleEmailChange}
+        />
         <TextInput
           style={styles.searchInput}
           value={this.state.password}
-          secureTextEntry={true}
+          secureTextEntry
           autoCorrect={false}
           autoCapitalize='none'
-          placeholder="Password"
-          onChange={this.handlePasswordChange.bind(this)} />
+          placeholder='Password'
+          onChange={_handlePasswordChange}
+        />
         <TouchableHighlight
           style={styles.button}
-          onPress={this.handleSubmit.bind(this)}
-          underlayColor="white">
+          onPress={_handleSubmit}
+          underlayColor='white'
+        >
           <Text style={styles.buttonText}> LOGIN </Text>
         </TouchableHighlight>
         <ActivityIndicatorIOS
           animating={this.state.isLoading}
           color='#111'
-          size='large'></ActivityIndicatorIOS>
+          size='large'
+        />
         {showErr}
       </View>
-    )
+    );
   }
-};
+}

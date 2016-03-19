@@ -107,7 +107,7 @@ export default class ViewMessage extends React.Component {
   }
 
   render() {
-    const {id} = this.props
+    const {id} = this.props;
 
     return (
       <View style={styles.container}>

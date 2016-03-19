@@ -2,15 +2,15 @@ import React from 'react-native';
 import Login from './Login';
 import store from 'react-native-simple-store';
 
-let {
-  View,
-  Text,
-  TextInput,
+const {
+  PropTypes,
   StyleSheet,
+  Text,
   TouchableHighlight,
+  View,
 } = React;
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     marginTop: 65
   },
@@ -22,14 +22,19 @@ let styles = StyleSheet.create({
   },
 });
 
-export default class Settings extends React.Component{
+export default class Settings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       firstName: '',
       lastName: ''
-    }
+    };
   }
+
+  static propTypes = {
+    navigator: PropTypes.object,
+  };
+
 
   componentDidMount() {
     store.get('session').then((res) => {
@@ -49,9 +54,11 @@ export default class Settings extends React.Component{
   }
 
   render() {
-    return(
+    const _logout = this.logOut;
+
+    return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={this.logOut.bind(this)}>
+        <TouchableHighlight onPress={_logout}>
           <Text style={styles.buttonText} > Log Out </Text>
         </TouchableHighlight>
       </View>
