@@ -24,6 +24,8 @@
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react/sort-comp": 0, // Not ready yet
+    // JSX
+    "jsx-quotes": [2, "prefer-single"],
     // Import
     "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
     "import/named": 2,

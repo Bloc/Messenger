@@ -1,18 +1,18 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
 
-let api = {
+const api = {
   setToken(user_info) {
     const email = user_info['email'].toLowerCase().trim();
-    let password = user_info['password'].toLowerCase().trim();
-    let url = `https://www.bloc.io/api/v1/sessions`;
+    const password = user_info['password'].toLowerCase().trim();
+    const url = `https://www.bloc.io/api/v1/sessions`;
 
     return fetch(url, {
       method: 'POST',
       body: `email=${email}&password=${password}`,
     })
     .then((res) => {
-      let resBody = JSON.parse(res._bodyText);
+      const resBody = JSON.parse(res._bodyText);
 
       store.save('session', {
         token: resBody.auth_token,
@@ -25,20 +25,20 @@ let api = {
   },
 
   sendMessage(id=null, text) {
-    let body = {
+    const body = {
       token: id,
       'stripped-text': text,
     };
 
     store.get('session').then((session) => {
-      let auth_token = session.token;
-      let user = session.current_user;
-      let url = `https://www.bloc.io/api/v1/messages`;
+      const auth_token = session.token;
+      const user = session.current_user;
+      const url = `https://www.bloc.io/api/v1/messages`;
 
       body['user_id'] = user.id;
       body['sender'] = user.email;
 
-      let init = {
+      const init = {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${auth_token}`
@@ -56,9 +56,9 @@ let api = {
 
   getMessagesForThread(id) {
     return store.get('session').then((session) => {
-      let auth_token = session.token;
-      let url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
-      let init = {
+      const auth_token = session.token;
+      const url = `https://www.bloc.io/api/v1/message_threads/index_with_messages`;
+      const init = {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${auth_token}`
@@ -67,8 +67,8 @@ let api = {
 
       return fetch(url, init)
       .then((res) => {
-        let items = JSON.parse(res._bodyText).items;
-        let messages = find(items, {id: id}).messages;
+        const items = JSON.parse(res._bodyText).items;
+        const messages = find(items, {id: id}).messages;
         return messages;
       })
       .catch((error) => console.log(`API messages error: ${error}`));
@@ -77,9 +77,9 @@ let api = {
 
   getMessageThreads() {
     return store.get('session').then((session) => {
-      let auth_token = session.token;
-      let url = `https://www.bloc.io/api/v1/message_threads`;
-      let init = {
+      const auth_token = session.token;
+      const url = `https://www.bloc.io/api/v1/message_threads`;
+      const init = {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${auth_token}`
@@ -88,7 +88,7 @@ let api = {
 
       return fetch(url, init)
       .then((res) => {
-        let resBody = JSON.parse(res._bodyText);
+        const resBody = JSON.parse(res._bodyText);
         return resBody.items;
       })
       .catch((error) => console.log(`API threads error: ${error}`));
