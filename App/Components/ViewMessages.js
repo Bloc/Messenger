@@ -1,6 +1,7 @@
 import React from 'react-native';
 import api from './../Lib/Api';
 import moment from 'moment';
+import Form from './NewMessageForm';
 
 const {
   Image,
@@ -106,12 +107,15 @@ export default class ViewMessage extends React.Component {
   }
 
   render() {
+    const {id} = this.props
+
     return (
       <View style={styles.container}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
         />
+        <Form id={id} />
       </View>
     );
   }

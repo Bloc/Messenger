@@ -2,7 +2,7 @@ import React from 'react-native';
 import api from './../Lib/Api';
 import store from 'react-native-simple-store';
 
-let {
+const {
   View,
   StyleSheet,
   Text,
@@ -22,23 +22,23 @@ export default class NewMessageForm extends React.Component {
   };
 
   render() {
-    let {id} = this.props
-    hintText = "**bold** _italic_ `code` >quote • - bullet list";
+    const {id} = this.props
+    const layout = () => {0,0,300,10};
 
     return(
       <View style={styles.container}>
         <TextInput style={styles.form}
-           value={this.state.messageText}
-           multiline={true}
-           onLayout={() => 0,0,300,10}
-           placeholder="Send a message"
-           onChange={this.setMessageText.bind(this, id)}
-           />
+          value={this.state.messageText}
+          multiline={true}
+          onLayout={layout}
+          placeholder='Send a message (API in the Bloc app is broken, no message will send)'
+          onChange={this.setMessageText.bind(this, id)}
+        />
         <TouchableHighlight
           style={styles.button}
           onPress={this.handleSubmit.bind(this)}
           autoCorrect={true}
-          underlayColor="#88D4F5">
+          underlayColor='#88D4F5'>
             <Text style={styles.buttonText}>Send</Text>
         </TouchableHighlight>
       </View>
@@ -46,14 +46,14 @@ export default class NewMessageForm extends React.Component {
   }
 
   handleSubmit() {
-    let {id} = this.props
-    let text = this.state.messageText
+    const {id} = this.props
+    const text = this.state.messageText
 
     api.sendMessage(id, text);
   }
 
   setMessageText(id, e) {
-    let text = e.nativeEvent.text;
+    const text = e.nativeEvent.text;
     this.setState({messageText: text});
 
     store.save('newMessage', {
@@ -63,7 +63,7 @@ export default class NewMessageForm extends React.Component {
   }
 }
 
-let styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

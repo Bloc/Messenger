@@ -98,7 +98,7 @@ export default class MessageThreads extends React.Component {
 
     return (
       <TouchableHighlight
-        underlayColor="rgba(192,192,192,1,0.6)"
+        underlayColor='rgba(192,192,192,1,0.6)'
         onPress={viewMessage}
       >
         <View>
