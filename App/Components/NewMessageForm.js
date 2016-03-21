@@ -49,7 +49,7 @@ export default class NewMessageForm extends React.Component {
 
   render() {
     const {id} = this.props;
-    const _setMessage = () => this.setMessageText(id);
+    const _setMessage = this.setMessageText.bind(this, id);
     const _handleSubmit = () => this.handleSubmit;
 
     return (
