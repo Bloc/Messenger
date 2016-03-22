@@ -1,3 +1,6 @@
+###This project has moved to [here](https://github.com/Bloc/BlocMessenger)
+---
+
 # Bloc Messenger
 
 This is a project with the sole purpose of being a side hustle.
