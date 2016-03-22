@@ -8,7 +8,7 @@ This is a project with the sole purpose of being a side hustle.
 - This should be thought of as an Open Source Project in a Private Repo
 - This project is not open to Student contributions at this time
 
-# Issues/Feature Requests
+## Issues/Feature Requests
 
 - Github will be the platform to [report issues](https://github.com/bdougie/BlocMessenger/issues/new) and bugs (*PRs are welcomed).
 - Feature can be requested through the [Github Issue creation](https://github.com/bdougie/BlocMessenger/issues/new) as well.
@@ -16,7 +16,7 @@ This is a project with the sole purpose of being a side hustle.
 - Feel free to reach to the repo owner for questions
 
 
-# Setup
+## Setup
 required dependencies:
 - npm 3 or greater
 - node 4.1 or greater
@@ -27,7 +27,7 @@ $ npm install reactive-native-cli -g
 $ npm install 
 ```
 
-# Start the Simulator
+## Start the Simulator
 
 ```
 $ open ios/BlocMessenger.xcodeproj/
@@ -35,6 +35,13 @@ $ open ios/BlocMessenger.xcodeproj/
 Then 
 `⌘ + R` or in the Menu `/Product/Run`
 
-# Tests
+## Tests
 
 `$ npm test`
+
+## Linting
+
+`$ npm install eslint -g`
+`$ eslint`
+
+
