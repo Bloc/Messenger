@@ -6,3 +6,5 @@ multiple unrelated changes.
 - Feel free to grab any open issues
 - Please feel free to open issues on GitHub
 - Please adhere to all lint rules using [.eslint](https://github.com/Bloc/BlocMessenger/blob/master/.eslintrc)
+- Testing is React Native is not as straight forward. Tests are
+encourages but not required.
