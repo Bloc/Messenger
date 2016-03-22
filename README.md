@@ -34,11 +34,16 @@ Then
 
 ## Tests
 
+Testing is only limited to Unit tests for now
+
 `$ npm test`
 
 ## Linting
 
-`$ npm install eslint -g`
-`$ eslint`
+The linter is strict but open to debate. Please open up PR's to the [eslintrc](https://github.com/Bloc/BlocMessenger/blob/master/.eslintrc) to request changes.
 
+```
+$ npm install eslint -g
+$ eslint
+```
 
