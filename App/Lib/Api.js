@@ -1,11 +1,16 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
 
+// use localhost:3000 or http://staging.bloc.io/ for testing purposes
+// const apiRoot = 'http://localhost:3000';
+// const apiRoot = 'https://staging.bloc.io';
+const apiRoot = 'https://www.bloc.io';
+
 const api = {
   setToken(userInfo) {
     const email = userInfo.email.toLowerCase().trim();
     const password = userInfo.password.toLowerCase().trim();
-    const url = 'https://www.bloc.io/api/v1/sessions';
+    const url = `${apiRoot}/api/v1/sessions`;
 
     return fetch(url, {
       method: 'POST',
@@ -33,7 +38,7 @@ const api = {
     store.get('session').then((session) => {
       const authToken = session.token;
       const user = session.current_user;
-      const url = 'https://www.bloc.io/api/v1/messages';
+      const url = `${apiRoot}/api/v1/messages`;
 
       body.user_id = user.id;
       body.sender = user.email;
@@ -57,7 +62,7 @@ const api = {
   getMessagesForThread(id) {
     return store.get('session').then((session) => {
       const authToken = session.token;
-      const url = 'https://www.bloc.io/api/v1/message_threads/index_with_messages';
+      const url = `${apiRoot}/api/v1/message_threads/index_with_messages`;
       const init = {
         method: 'GET',
         headers: {
@@ -78,7 +83,7 @@ const api = {
   getMessageThreads() {
     return store.get('session').then((session) => {
       const authToken = session.token;
-      const url = 'https://www.bloc.io/api/v1/message_threads';
+      const url = `${apiRoot}/api/v1/message_threads`;
       const init = {
         method: 'GET',
         headers: {
