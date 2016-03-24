@@ -1,4 +1,5 @@
 # Bloc Messenger
+![master-p](http://www.soulcentraltv.net/wp-content/uploads/2013/02/I-Got-The-Hook-UpbannerH.jpg)
 
 This is a project with the sole purpose of being a side hustle.
 - This is not on the Outcomes Roadmap
@@ -34,11 +35,16 @@ Then
 
 ## Tests
 
+Testing is only limited to Unit tests for now
+
 `$ npm test`
 
 ## Linting
 
-`$ npm install eslint -g`
-`$ eslint`
+The linter is strict but open to debate. Please open up PR's to the [eslintrc](https://github.com/Bloc/BlocMessenger/blob/master/.eslintrc) to request changes.
 
+```
+$ npm install eslint -g
+$ eslint
+```
 
