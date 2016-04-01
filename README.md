@@ -49,3 +49,7 @@ $ npm install eslint -g
 $ eslint
 ```
 
+## API Endpoints
+
+If you plan to add new features to the Messenger, note that there is documentation for API endpoints open to [Students](http://docs.blocapi.apiary.io/#reference/0/credentials) and [Mentors](https://www.bloc.io/apidoc).
+
