@@ -120,9 +120,9 @@ export default class Login extends React.Component {
   }
 
   render() {
-    const _handleSubmit = this.handleSubmit;
-    const _handleEmailChange = this.handleEmailChange;
-    const _handlePasswordChange = this.handlePasswordChange;
+    const _handleSubmit = this.handleSubmit.bind(this);
+    const _handleEmailChange = this.handleEmailChange.bind(this);
+    const _handlePasswordChange = this.handlePasswordChange.bind(this);
     const showErr = (
       this.state.error ? <Text> {this.state.error} </Text> : <View />
     );
