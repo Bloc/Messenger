@@ -3,7 +3,6 @@ import api from './../Lib/Api';
 import MessageThreads from './MessageThreads';
 
 const {
-  ActivityIndicatorIOS,
   PropTypes,
   StyleSheet,
   Text,
@@ -128,37 +127,32 @@ export default class Login extends React.Component {
     );
     return (
       <View style={styles.mainContainer}>
-      <Text style={styles.title}> Login using your Bloc.io username and password</Text>
-        <TextInput
-          style={styles.searchInput}
-          value={this.state.username}
-          autoCorrect={false}
-          placeholder='Email'
-          autoCapitalize='none'
-          onChange={_handleEmailChange}
-        />
-        <TextInput
-          style={styles.searchInput}
-          value={this.state.password}
-          secureTextEntry
-          autoCorrect={false}
-          autoCapitalize='none'
-          placeholder='Password'
-          onChange={_handlePasswordChange}
-        />
-        <TouchableHighlight
-          style={styles.button}
-          onPress={_handleSubmit}
-          underlayColor='white'
-        >
-          <Text style={styles.buttonText}> LOGIN </Text>
-        </TouchableHighlight>
-        <ActivityIndicatorIOS
-          animating={this.state.isLoading}
-          color='#111'
-          size='large'
-        />
-        {showErr}
+        <Text style={styles.title}> Login using your Bloc.io username and password</Text>
+          <TextInput
+            style={styles.searchInput}
+            value={this.state.username}
+            autoCorrect={false}
+            placeholder='Email'
+            autoCapitalize='none'
+            onChange={_handleEmailChange}
+          />
+          <TextInput
+            style={styles.searchInput}
+            value={this.state.password}
+            secureTextEntry
+            autoCorrect={false}
+            autoCapitalize='none'
+            placeholder='Password'
+            onChange={_handlePasswordChange}
+          />
+          <TouchableHighlight
+            style={styles.button}
+            onPress={_handleSubmit}
+            underlayColor='white'
+          >
+            <Text style={styles.buttonText}> LOGIN </Text>
+          </TouchableHighlight>
+          {showErr}
       </View>
     );
   }
