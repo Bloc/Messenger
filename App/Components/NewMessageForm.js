@@ -45,12 +45,13 @@ export default class NewMessageForm extends React.Component {
 
   static propTypes = {
     id: PropTypes.number,
+    token: PropTypes.string,
   };
 
   render() {
-    const {id} = this.props;
-    const _setMessage = this.setMessageText.bind(this, id);
-    const _handleSubmit = () => this.handleSubmit;
+    const {token} = this.props;
+    const _setMessage = this.setMessageText.bind(this, token);
+    const _handleSubmit = this.handleSubmit.bind(this);
 
     return (
       <View style={styles.container}>
@@ -73,18 +74,18 @@ export default class NewMessageForm extends React.Component {
   }
 
   handleSubmit() {
-    const {id} = this.props;
+    const {id, token} = this.props;
     const text = this.state.messageText;
 
-    api.sendMessage(id, text);
+    api.sendMessage(id, token, text);
   }
 
-  setMessageText(id, e) {
+  setMessageText(token, e) {
     const text = e.nativeEvent.text;
     this.setState({messageText: text});
 
     store.save('newMessage', {
-      id: id,
+      id: token,
       text: text,
     });
   }

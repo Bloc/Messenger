@@ -57,7 +57,6 @@ export default class ViewMessage extends React.Component {
 
     this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
     this.state = {
-      rawData: {},
       dataSource: this.ds,
       threadId: ''
     };
@@ -65,6 +64,7 @@ export default class ViewMessage extends React.Component {
 
   static propTypes = {
     id: PropTypes.number,
+    token: PropTypes.string,
   };
 
   componentDidMount() {
@@ -77,7 +77,6 @@ export default class ViewMessage extends React.Component {
     .then((data) => {
       this.setState({
         dataSource: this.ds.cloneWithRows(data),
-        rawData: data,
       });
     })
     .catch((error) => console.log(`fetchMessages error: ${error}`));
@@ -107,7 +106,7 @@ export default class ViewMessage extends React.Component {
   }
 
   render() {
-    const {id} = this.props;
+    const {id, token} = this.props;
 
     return (
       <View style={styles.container}>
@@ -115,7 +114,7 @@ export default class ViewMessage extends React.Component {
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
         />
-        <Form id={id} />
+        <Form id={id} token={token} />
       </View>
     );
   }

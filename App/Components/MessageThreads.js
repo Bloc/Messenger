@@ -56,9 +56,8 @@ export default class MessageThreads extends React.Component {
 
     this.ds = new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2});
     this.state = {
-      rawData: {},
       dataSource: this.ds,
-      threadId: ''
+      threadId: '',
     };
   }
 
@@ -67,15 +66,14 @@ export default class MessageThreads extends React.Component {
   };
 
   componentDidMount() {
-    this.fetchThread();
+    this.fetchThreads();
   }
 
-  fetchThread() {
+  fetchThreads() {
     api.getMessageThreads()
     .then((data) => {
       this.setState({
         dataSource: this.ds.cloneWithRows(data),
-        rawData: data,
       });
     })
     .catch((error) => console.error(`error: ${error}`));
@@ -87,6 +85,7 @@ export default class MessageThreads extends React.Component {
       title: rowData.subject,
       passProps: {
         id: rowData.id,
+        token: rowData.token,
       }
     });
   }
