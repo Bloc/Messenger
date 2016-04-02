@@ -11,6 +11,7 @@
     "curly": 0,
     "default-case": 0,
     "new-cap": [2, {"capIsNew": false, "newIsCap": true}],
+    "no-console": [2, { allow: ["log", "error"] }],
     "no-floating-decimal": 0,
     "no-param-reassign": 0,
     "no-shadow": 0,

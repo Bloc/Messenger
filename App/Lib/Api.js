@@ -1,5 +1,6 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
+import squish from './Squish';
 
 // use localhost:3000 or http://staging.bloc.io/ for testing purposes
 // const apiRoot = 'http://localhost:3000';
@@ -29,9 +30,9 @@ const api = {
     .catch((error) => console.log('token creation failure'));
   },
 
-  sendMessage(id = null, text) {
+  sendMessage(id = null, token, text) {
     const body = {
-      token: id,
+      token: token,
       'stripped-text': text,
     };
 
@@ -48,12 +49,14 @@ const api = {
         headers: {
           Authorization: `Bearer ${authToken}`
         },
-        body: JSON.stringify(body),
+        body: squish(
+          `user_id=${body.user_id}&sender=${body.sender}
+          &token=${body.token}&stripped-text=${body['stripped-text']}`
+        )
       };
 
-
       fetch(url, init)
-      .then((res) => console.log(res))
+      .then((res) => console.log(`Message sent: ${res}`))
       .catch((error) => console.log(`Send Message error: ${error}`));
     });
 
