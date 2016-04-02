@@ -54,7 +54,7 @@ export default class Settings extends React.Component {
   }
 
   render() {
-    const _logout = this.logOut;
+    const _logout = this.logOut.bind(this);
 
     return (
       <View style={styles.container}>
