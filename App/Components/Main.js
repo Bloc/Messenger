@@ -21,9 +21,11 @@ export default class Main extends React.Component {
 
   checkForKey() {
     store.get('session').then((session) => {
-      this.setState({
-        auth_token: session.token
-      });
+      if (session) {
+        this.setState({
+          auth_token: session.token
+        });
+      }
     });
   }
   render() {
