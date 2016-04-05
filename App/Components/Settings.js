@@ -38,10 +38,12 @@ export default class Settings extends React.Component {
 
   componentDidMount() {
     store.get('session').then((res) => {
-      this.setState({
-        firstName: res.user.first_name,
-        lastName: res.user.last_name,
-      });
+      if (res) {
+        this.setState({
+          firstName: res.user.first_name,
+          lastName: res.user.last_name,
+        });
+      }
     });
   }
 
@@ -54,7 +56,7 @@ export default class Settings extends React.Component {
   }
 
   render() {
-    const _logout = this.logOut;
+    const _logout = this.logOut.bind(this);
 
     return (
       <View style={styles.container}>

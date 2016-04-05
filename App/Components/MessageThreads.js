@@ -76,7 +76,7 @@ export default class MessageThreads extends React.Component {
         dataSource: this.ds.cloneWithRows(data),
       });
     })
-    .catch((error) => console.error(`error: ${error}`));
+    .catch((error) => console.log(`error: ${error}`));
   }
 
   viewMessages(rowData) {
