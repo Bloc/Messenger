@@ -1,3 +1,0 @@
---require react-native-mock/mock.js
---compilers js:babel-core/register
---recursive App/**/__tests__/*.test.js
