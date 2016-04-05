@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --require react-native-mock/mock.js --opts test/mocha.opts --recursive App/**/__tests__/*.test.js"
+    "test": "mocha --require react-native-mock/mock.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
-    "presets": [
-      "react-native"
+    "presets": ["react-native"],
+    "plugins": [
+      "transform-runtime"
     ]
   },
   "dependencies": {
-    "babel-eslint": "^5.0.0",
-    "eslint": "^2.2.0",
+    "babel-eslint": "^6.0.0",
+    "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.0.2",
     "eslint-plugin-import": "^1.0.3",
     "eslint-plugin-react": "^4.1.0",
@@ -26,10 +27,15 @@
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.4",
     "babel-preset-react-native": "^1.5.2",
+    "babel-runtime": "^6.6.1",
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
-    "react-dom": "^0.14.7",
+    "react": "^0.14.8",
+    "react-addons-test-utils": "^0.14.8",
+    "react-dom": "^0.14.8",
     "react-native-mock": "0.0.6"
   }
 }
