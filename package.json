@@ -9,9 +9,9 @@
   "babel": {
     "presets": [
       "react-native",
-      "stage-0",
-      "transform-runtime"
-    ]
+      "stage-0"
+    ],
+  "plugins": ["transform-runtime"]
   },
   "dependencies": {
     "babel-eslint": "^6.0.0",
