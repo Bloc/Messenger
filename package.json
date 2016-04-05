@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --require react-native-mock/mock.js --opts test/mocha.opts --recursive App/**/__tests__/*.test.js"
+    "test": "mocha --require react-native-mock/mock.js --opts test/mocha.opts --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
     "presets": [
