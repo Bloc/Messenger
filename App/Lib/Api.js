@@ -20,10 +20,12 @@ const api = {
     .then((res) => {
       const resBody = JSON.parse(res._bodyText);
 
-      store.save('session', {
-        token: resBody.auth_token,
-        current_user: resBody.user,
-      });
+      if (res.status < 400) {
+        store.save('session', {
+          token: resBody.auth_token,
+          current_user: resBody.user,
+        });
+      }
 
       return resBody;
     })
