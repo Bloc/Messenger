@@ -9,7 +9,8 @@
   "babel": {
     "presets": [
       "react-native",
-      "stage-0"
+      "stage-0",
+      "transform-runtime"
     ]
   },
   "dependencies": {
@@ -28,6 +29,8 @@
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
+    "babel-plugin-transform-runtime": "^6.6.0",
+    "babel-polyfill": "^6.7.4",
     "babel-preset-react-native": "^1.5.2",
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
