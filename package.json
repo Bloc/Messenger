@@ -4,11 +4,12 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --require js:babel-core/register react-native-mock/mock.js --opts test/mocha.opts --recursive App/**/__tests__/*.test.js"
+    "test": "mocha --require react-native-mock/mock.js --opts test/mocha.opts --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
     "presets": [
-      "react-native"
+      "react-native",
+      "stage-0"
     ]
   },
   "dependencies": {
@@ -27,6 +28,7 @@
   "devDependencies": {
     "babel-core": "^6.7.2",
     "babel-preset-react-native": "^1.5.2",
+    "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
     "react-dom": "^0.14.7",
