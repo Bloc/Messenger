@@ -7,10 +7,7 @@
     "test": "mocha --require react-native-mock/mock.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
-    "presets": [
-      "react-native",
-      "stage-0"
-    ],
+    "presets": ["react-native"],
     "plugins": [
       "transform-runtime"
     ]
@@ -33,7 +30,6 @@
     "babel-plugin-transform-runtime": "^6.6.0",
     "babel-polyfill": "^6.7.4",
     "babel-preset-react-native": "^1.5.2",
-    "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.6.1",
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
