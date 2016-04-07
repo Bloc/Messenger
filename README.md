@@ -38,7 +38,11 @@ Then
 
 Testing is only limited to Unit tests for now
 
-`$ npm test`
+```
+$ npm test
+$ npm run tdd // for test watcher
+```
+
 
 ## Linting
 

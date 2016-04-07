@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --require ./test/testHelper.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
+    "test": "mocha --opts test/mocha.opts",
+    "tdd": "mocha -w --opts test/mocha.opts"
   },
   "babel": {
     "presets": ["react-native"]
