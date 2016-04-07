@@ -7,9 +7,8 @@
     "test": "mocha --require react-native-mock/mock.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
-    "presets": ["react-native"],
-    "plugins": [
-      "transform-runtime"
+    "presets": [
+      "react-native"
     ]
   },
   "dependencies": {
@@ -22,15 +21,13 @@
     "estraverse-fb": "^1.3.1",
     "lodash": "^4.5.0",
     "moment": "^2.12.0",
-    "react-native": "^0.20.0",
+    "react-native": "^0.23.0",
     "react-native-simple-store": "^0.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.2",
-    "babel-plugin-transform-runtime": "^6.6.0",
     "babel-polyfill": "^6.7.4",
     "babel-preset-react-native": "^1.5.2",
-    "babel-runtime": "^6.6.1",
     "chai": "^3.5.0",
     "enzyme": "^2.1.0",
     "react": "^0.14.8",
