@@ -36,7 +36,9 @@ Then
 ![sample image](http://i.imgur.com/xVetwhwm.png)
 ## Tests
 
-Testing is only limited to Unit tests for now
+Testing is only limited to Unit tests for now. Consider reading the
+  [enzyme](http://airbnb.io/enzyme/docs/api/shallow.html) documentation
+  for reference.
 
 ```
 $ npm test
