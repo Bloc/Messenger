@@ -4,12 +4,10 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "test": "mocha --require react-native-mock/mock.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
+    "test": "mocha --require ./test/testHelper.js --compilers js:babel-core/register --recursive App/**/__tests__/*.test.js"
   },
   "babel": {
-    "presets": [
-      "react-native"
-    ]
+    "presets": ["react-native"]
   },
   "dependencies": {
     "babel-eslint": "^6.0.0",
