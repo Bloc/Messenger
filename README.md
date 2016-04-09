@@ -28,6 +28,7 @@ $ npm install
 ## Start the Simulator
 
 ```
+$ react-native start ios
 $ open ios/BlocMessenger.xcodeproj/
 ```
 Then 
