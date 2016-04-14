@@ -11,13 +11,12 @@ const api = {
   setToken(userInfo) {
     const email = userInfo.email.toLowerCase().trim();
     const password = userInfo.password.toLowerCase().trim();
-    const url = `${apiRoot}/api/v1/sessions`;
+    const url = `${apiRoot}/api/v1/sessions?email=${email}&password=${password}`;
+    const params = {
+      method: 'POST'
+    };
 
-    return fetch(url, {
-      method: 'POST',
-      body: `email=${email}&password=${password}`,
-    })
-    .then((res) => {
+    return fetch(url, params).then((res) => {
       const resBody = JSON.parse(res._bodyText);
 
       if (res.status < 400) {
