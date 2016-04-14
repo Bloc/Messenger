@@ -11,6 +11,6 @@
 
 ## Help Getting Started with React Native
 
-The recommendation for getting start is to complete [egghead.io tutorial](https://egghead.io/series/react-native-fundamentals) by Tyler McGinnis. This should be enough to get an understanding of the React Native framework (iOS or Android experience is not neccesary).
+The recommendation for getting start is to complete this [egghead.io tutorial](https://egghead.io/series/react-native-fundamentals) by Tyler McGinnis. This should be enough to get a good understanding of the React Native framework (iOS or Android experience is not neccesary).
 
-After completion of that tutorial set up a pairing session with [@bdougie](https://github.com/bdougie) to get the lay of the land.
+After completing the tutorial, set up a pairing session with [@bdougie](https://github.com/bdougie) to get the lay of the land.
