@@ -21,7 +21,7 @@ required dependencies:
 - Xcode 7.2.1
 
 ```
-$ npm install reactive-native-cli -g
+$ npm install react-native-cli -g
 $ npm install 
 ```
 
