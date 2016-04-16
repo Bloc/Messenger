@@ -51,13 +51,24 @@ $ npm test
 $ npm run tdd // for test watcher
 ```
 
-## Running Localling on iPhone
+## Building Bloc Messenger for an iOS device
 
-```
-$ npm run build
-```
+NOTE: This requires a membership to the Apple Developer Program.
+
+If you'd like to run the application on your device, follow these steps:
+
+1. Ensure you're running: `$ react-native start ios`
+2. Build a new jsbundle: `$ curl http://localhost:8081/index.ios.bundle -o main.jsbundle`
+3. Tweak the `AppDelegate.m` file to use the "OPTION 2" by uncommenting the following line:
+  
+  ```
+  //   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  ```
+
+4. Plug in your device
+5. Select your device from the build targets:
+  ![](https://www.dropbox.com/s/crrsy6flwjxz737/Screenshot%202016-04-16%2012.40.12.png?dl=1)
 [more info](http://developingjourney.netlify.com/2015/12/20/how-to-test-react-native-on-your-device)
-
 
 ## Linting
 
