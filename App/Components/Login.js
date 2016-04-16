@@ -1,15 +1,15 @@
-import React from 'react-native';
-import api from './../Lib/Api';
-import MessageThreads from './MessageThreads';
-
-const {
+import React, {
   PropTypes,
   StyleSheet,
   Text,
   TextInput,
   TouchableHighlight,
   View,
-} = React;
+  Component
+} from 'react-native';
+
+import api from './../Lib/Api';
+import MessageThreads from './MessageThreads';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Login extends React.Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {

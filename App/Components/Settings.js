@@ -1,14 +1,14 @@
-import React from 'react-native';
-import Login from './Login';
-import store from 'react-native-simple-store';
-
-const {
+import React, {
   PropTypes,
   StyleSheet,
   Text,
   TouchableHighlight,
   View,
-} = React;
+  Component
+} from 'react-native';
+
+import Login from './Login';
+import store from 'react-native-simple-store';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Settings extends React.Component {
+export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {

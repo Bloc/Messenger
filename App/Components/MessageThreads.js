@@ -1,9 +1,4 @@
-import React from 'react-native';
-import ViewMessages from './ViewMessages';
-import Separator from './../Helpers/Separator';
-import api from './../Lib/Api';
-
-const {
+import React, {
   Image,
   ListView,
   PropTypes,
@@ -11,7 +6,12 @@ const {
   Text,
   TouchableHighlight,
   View,
-} = React;
+  Component
+} from 'react-native';
+
+import ViewMessages from './ViewMessages';
+import Separator from './../Helpers/Separator';
+import api from './../Lib/Api';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class MessageThreads extends React.Component {
+export default class MessageThreads extends Component {
   constructor(props) {
     super(props);
 

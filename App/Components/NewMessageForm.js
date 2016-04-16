@@ -1,15 +1,15 @@
-import React from 'react-native';
-import api from './../Lib/Api';
-import store from 'react-native-simple-store';
-
-const {
+import React, {
   View,
   StyleSheet,
   Text,
   TouchableHighlight,
   PropTypes,
   TextInput,
-} = React;
+  Component
+} from 'react-native';
+
+import api from './../Lib/Api';
+import store from 'react-native-simple-store';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class NewMessageForm extends React.Component {
+export default class NewMessageForm extends Component {
   constructor(props) {
     super(props);
     this.state = {messageText: ''};
