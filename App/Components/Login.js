@@ -96,28 +96,37 @@ export default class Login extends React.Component {
 
     api.setToken(userInfo)
     .then((res) => {
-      const fullName = `${res.user.first_name} ${res.user.last_name}`;
+      if (res.status < 400) {
+        const fullName = `${res.user.first_name} ${res.user.last_name}`;
 
-      this.props.navigator.resetTo({
-        title: fullName,
-        component: MessageThreads,
-      });
+        this.props.navigator.resetTo({
+          title: fullName,
+          component: MessageThreads,
+        });
 
-      this.setState({
-        isLoading: false,
-        error: false,
-        username: '',
-        password: '',
-      });
+        this.setState({
+          isLoading: false,
+          error: false,
+          username: '',
+          password: '',
+        });
+      } else {
+        this.handleError(res.message);
+      }
+ 
     })
     .catch((error) => {
-      this.setState({
-        error: 'User not found',
-        isLoading: false,
-      });
+      this.handleError(error);
     });
   }
 
+  handleError(error) {
+    this.setState({
+      isLoading: false,
+      error: error
+    });
+  }
+  
   render() {
     const _handleSubmit = this.handleSubmit.bind(this);
     const _handleEmailChange = this.handleEmailChange.bind(this);
