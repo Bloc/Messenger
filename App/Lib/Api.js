@@ -32,33 +32,30 @@ const api = {
   },
 
   sendMessage(id = null, token, text) {
-    const body = {
-      token: token,
-      'stripped-text': text,
-    };
-
-    store.get('session').then((session) => {
+    store.get('session').then((session) => { //TODO: refactor a performAuthorizedAction function
       const authToken = session.token;
       const user = session.current_user;
-      const url = `${apiRoot}/api/v1/messages`;
-
-      body.user_id = user.id;
-      body.sender = user.email;
-
-      const init = {
+      const params = {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${authToken}`
-        },
-        body: squish(
-          `user_id=${body.user_id}&sender=${body.sender}
-          &token=${body.token}&stripped-text=${body['stripped-text']}`
-        )
+        }
       };
 
-      fetch(url, init)
-      .then((res) => console.log(`Message sent: ${res}`))
-      .catch((error) => console.log(`Send Message error: ${error}`));
+      const url = `${apiRoot}/api/v1/messages?user_id=${user.id}&sender=${user.email}&token=${token}&stripped-text=${text}`;
+
+      fetch(url, params)
+      .then((res) => {
+        if (res.status >= 400) { //TODO refactor a generic error handler to display to the user
+          console.log(res);
+        } else {
+          console.log("Message Sent. Response on next line.");
+          console.log(res);
+        }
+      })
+      .catch((error) => {
+        console.log(`Send Message error: ${error}`);
+      })
     });
 
   },
