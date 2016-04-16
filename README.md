@@ -28,13 +28,14 @@ $ npm install
 ## Start the Simulator
 
 ```
-$ react-native start ios
+$ npm run ios
 $ open ios/BlocMessenger.xcodeproj/
 ```
 Then 
 `⌘ + R` or in the Menu `/Product/Run`
 
 ![sample image](http://i.imgur.com/xVetwhwm.png)
+
 ## Tests
 
 Testing is only limited to Unit tests for now. Consider reading the
@@ -45,6 +46,13 @@ Testing is only limited to Unit tests for now. Consider reading the
 $ npm test
 $ npm run tdd // for test watcher
 ```
+
+## Running Localling on iPhone
+
+```
+$ npm run build
+```
+[more info](http://developingjourney.netlify.com/2015/12/20/how-to-test-react-native-on-your-device)
 
 
 ## Linting

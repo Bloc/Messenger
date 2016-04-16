@@ -7,12 +7,12 @@ describe('<Login />', () => {
   it('should render text for Login', () => {
     const component = shallow(<Login />);
     const text = component.find(Text).node.props.children;
-    expect(text).to.eq(' Login using your Bloc.io username and password');
+    expect(text).to.eq(' Login using your Bloc.io email and password');
   });
 
   it('populates email field', () => {
     const component = shallow(<Login />);
-    component.setState({username: 'bill@mail.com'});
+    component.setState({email: 'bill@mail.com'});
     expect(component.contains(<TextInput value='bill@email.com' />));
   });
 

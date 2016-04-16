@@ -5,7 +5,10 @@
   "scripts": {
     "start": "react-native start",
     "test": "mocha --opts test/mocha.opts",
-    "tdd": "mocha -w --opts test/mocha.opts"
+    "tdd": "mocha -w --opts test/mocha.opts",
+    "build": "curl http://localhost:8081/index.ios.bundle -o main.jsbundle",
+    "ios": "react-native start ios",
+    "android": "react-native start android"
   },
   "babel": {
     "presets": ["react-native"]

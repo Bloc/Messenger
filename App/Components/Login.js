@@ -61,7 +61,7 @@ export default class Login extends React.Component {
     super(props);
     this.state = {
       auth_token: '',
-      username: '',
+      email: '',
       password: '',
       isLoading: false,
       error: false
@@ -74,7 +74,7 @@ export default class Login extends React.Component {
 
   handleEmailChange(event) {
     this.setState({
-      username: event.nativeEvent.text
+      email: event.nativeEvent.text
     });
   }
 
@@ -90,7 +90,7 @@ export default class Login extends React.Component {
     });
 
     const userInfo = {
-      email: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
 
@@ -107,7 +107,7 @@ export default class Login extends React.Component {
         this.setState({
           isLoading: false,
           error: false,
-          username: '',
+          email: '',
           password: '',
         });
       } else {
@@ -136,10 +136,10 @@ export default class Login extends React.Component {
     );
     return (
       <View style={styles.mainContainer}>
-        <Text style={styles.title}> Login using your Bloc.io username and password</Text>
+        <Text style={styles.title}> Login using your Bloc.io email and password</Text>
           <TextInput
             style={styles.searchInput}
-            value={this.state.username}
+            value={this.state.email}
             autoCorrect={false}
             placeholder='Email'
             autoCapitalize='none'
