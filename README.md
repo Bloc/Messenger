@@ -1,4 +1,4 @@
-[![CircleCI branch](https://circleci.com/gh/Bloc/Messenger.png?circle-token=1cc185a5a8afcf78acc633aeea783507d09e754b/master.svg?maxAge=2592000)]()
+[![CircleCI branch](https://circleci.com/gh/Bloc/Messenger.png?circle-token=1cc185a5a8afcf78acc633aeea783507d09e754b/master.svg?maxAge=2592000)](https://circleci.com/dashboard)
 [![GitHub issues](https://img.shields.io/github/issues/Bloc/Messenger.svg)](https://github.com/Bloc/Messenger/issues)
 
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/Bloc/Messenger.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
