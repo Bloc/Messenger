@@ -19,7 +19,7 @@ const api = {
     return fetch(url, params).then((res) => {
       const resBody = JSON.parse(res._bodyText);
 
-      if (res.status < 400) {
+      if (res.ok) {
         store.save('session', {
           token: resBody.auth_token,
           current_user: resBody.user,
