@@ -1,11 +1,10 @@
-import React from 'react-native';
+import React, {
+  PropTypes,
+} from 'react-native';
+
 import Login from './Login';
 import MessageThreads from './MessageThreads';
 import store from 'react-native-simple-store';
-
-const {
-  PropTypes,
-} = React;
 
 export default class Main extends React.Component {
   constructor(props) {

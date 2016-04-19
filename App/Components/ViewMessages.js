@@ -1,16 +1,16 @@
-import React from 'react-native';
-import api from './../Lib/Api';
-import moment from 'moment';
-import Form from './NewMessageForm';
-
-const {
+import React, {
   Image,
   ListView,
   PropTypes,
   Text,
   View,
   StyleSheet,
-} = React;
+  Component
+} from 'react-native';
+
+import api from './../Lib/Api';
+import moment from 'moment';
+import Form from './NewMessageForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class ViewMessage extends React.Component {
+export default class ViewMessage extends Component {
   constructor(props) {
     super(props);
 

@@ -29,37 +29,34 @@ const api = {
 
       return resBody;
     })
-    .catch((error) => console.log('token creation failure'));
+    .catch((error) => console.log(`error: ${error.message}`));
   },
 
   sendMessage(id = null, token, text) {
-    const body = {
-      token: token,
-      'stripped-text': text,
-    };
-
     store.get('session').then((session) => {
       const authToken = session.token;
       const user = session.current_user;
-      const url = `${apiRoot}/api/v1/messages`;
-
-      body.user_id = user.id;
-      body.sender = user.email;
-
-      const init = {
+      const params = {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${authToken}`
-        },
-        body: squish(
-          `user_id=${body.user_id}&sender=${body.sender}
-          &token=${body.token}&stripped-text=${body['stripped-text']}`
-        )
+        }
       };
 
-      fetch(url, init)
-      .then((res) => console.log(`Message sent: ${res}`))
-      .catch((error) => console.log(`Send Message error: ${error.message}`));
+      const url = `${apiRoot}/api/v1/messages?user_id=${user.id}&sender=${user.email}&token=${token}&stripped-text=${text}`;
+
+      fetch(url, params)
+      .then((res) => {
+        if (res.status >= 400) {
+          console.log(res);
+        } else {
+          console.log("Message Sent. Response on next line.");
+          console.log(res);
+        }
+      })
+      .catch((error) => {
+        console.log(`Send Message error: ${error.message}`);
+      })
     });
 
   },
@@ -96,7 +93,7 @@ const api = {
         }
       };
 
-      return axios.get(url, {init})
+      return axios.get(url, init)
       .then((res) => {
         const resBody = res.data;
         return resBody.items;

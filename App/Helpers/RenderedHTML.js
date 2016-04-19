@@ -1,10 +1,9 @@
-import React from 'react-native';
-
-const {
+import React, {
   Text,
-} = React;
+  Component
+} from 'react-native';
 
-export default class RenderedHTML extends React.Component{
+export default class RenderedHTML extends Component {
   createMarkUp() {
     return {__html: 'First &middot; Second'};
   }

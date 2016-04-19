@@ -1,9 +1,8 @@
-import React from 'react-native';
-
-const {
+import React, {
   View,
   StyleSheet,
-} = React;
+  Component
+} from 'react-native';
 
 const styles = StyleSheet.create({
   separator: {
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class Separator extends React.Component {
+export default class Separator extends Component {
   render() {
     return (
       <View style={styles.separator} />
