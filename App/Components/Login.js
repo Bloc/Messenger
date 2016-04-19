@@ -96,8 +96,10 @@ export default class Login extends Component {
 
     api.setToken(userInfo)
     .then((res) => {
-      if (res.status < 400) {
-        const fullName = `${res.user.first_name} ${res.user.last_name}`;
+      
+      if (res.user) {
+        const person = res.user;
+        const fullName = `${person.first_name} ${person.last_name}`;
 
         this.props.navigator.resetTo({
           title: fullName,
@@ -113,7 +115,6 @@ export default class Login extends Component {
       } else {
         this.handleError(res.message);
       }
- 
     })
     .catch((error) => {
       this.handleError(error);
