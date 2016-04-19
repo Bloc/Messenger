@@ -1,7 +1,6 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
 import squish from './Squish';
-import axios from 'axios';
 
 // use localhost:3000 or http://staging.bloc.io/ for testing purposes
 // const apiRoot = 'http://localhost:3000';
@@ -12,29 +11,35 @@ const api = {
   setToken(userInfo) {
     const email = userInfo.email.toLowerCase().trim();
     const password = userInfo.password.toLowerCase().trim();
-    const url = `${apiRoot}/api/v1/sessions?email=${email}&password=${password}`;
-    const params = {
-      method: 'POST'
+    const url = `${apiRoot}/api/v1/sessions`;
+    const params = { 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: `${email}`,
+        password: `${password}`
+      })
     };
 
-    return axios.post(url).then((res) => {
-      const resBody = res.data;
-
-      if (res.status.ok) {
+    return fetch(url, params).then((res) => {  
+      const resBody = res.json();
+      if (res.ok) {
         store.save('session', {
           token: resBody.auth_token,
           current_user: resBody.user,
         });
       }
-
       return resBody;
     })
-    .catch((error) => console.log(`error: ${error.message}`));
+    .catch((error) => console.log(error, `error: ${error.message}`));
   },
 
   sendMessage(id = null, token, text) {
     store.get('session').then((session) => {
       const authToken = session.token;
+      console.log(authToken);
       const user = session.current_user;
       const params = {
         method: 'POST',
@@ -47,7 +52,7 @@ const api = {
 
       fetch(url, params)
       .then((res) => {
-        if (res.status >= 400) {
+        if (!res.ok) {
           console.log(res);
         } else {
           console.log("Message Sent. Response on next line.");
@@ -72,11 +77,13 @@ const api = {
         }
       };
 
-      return axios.get(url, init)
+      return fetch(url, init)
       .then((res) => {
-        const items = res.data.items;
-        const messages = find(items, {id: id}).messages;
-        return messages;
+        return res.json();
+      })
+      .then((resData) => {
+        const items = resData.items;
+        return find(items, {id: id}).messages;   
       })
       .catch((error) => console.log(`API messages error: ${error.message}`));
     });
@@ -93,12 +100,14 @@ const api = {
         }
       };
 
-      return axios.get(url, init)
-      .then((res) => {
-        const resBody = res.data;
-        return resBody.items;
-      })
-      .catch((error) => console.log(`API threads error: ${error.message}`));
+      return fetch(url, init)
+        .then((res) => {
+          return res.json();
+        })
+        .then((resData) => {
+          return resData.items;
+        })
+        .catch((error) => console.log(`API threads error: ${error.message}`));
     });
   }
 };
