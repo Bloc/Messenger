@@ -1,6 +1,7 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
 import squish from './Squish';
+import axios from 'axios';
 
 // use localhost:3000 or http://staging.bloc.io/ for testing purposes
 // const apiRoot = 'http://localhost:3000';
@@ -16,10 +17,10 @@ const api = {
       method: 'POST'
     };
 
-    return fetch(url, params).then((res) => {
-      const resBody = JSON.parse(res._bodyText);
+    return axios.post(url).then((res) => {
+      const resBody = res.data;
 
-      if (res.status < 400) {
+      if (res.status.ok) {
         store.save('session', {
           token: resBody.auth_token,
           current_user: resBody.user,
@@ -58,7 +59,7 @@ const api = {
 
       fetch(url, init)
       .then((res) => console.log(`Message sent: ${res}`))
-      .catch((error) => console.log(`Send Message error: ${error}`));
+      .catch((error) => console.log(`Send Message error: ${error.message}`));
     });
 
   },
@@ -74,13 +75,13 @@ const api = {
         }
       };
 
-      return fetch(url, init)
+      return axios.get(url, init)
       .then((res) => {
-        const items = JSON.parse(res._bodyText).items;
+        const items = res.data.items;
         const messages = find(items, {id: id}).messages;
         return messages;
       })
-      .catch((error) => console.log(`API messages error: ${error}`));
+      .catch((error) => console.log(`API messages error: ${error.message}`));
     });
   },
 
@@ -95,12 +96,12 @@ const api = {
         }
       };
 
-      return fetch(url, init)
+      return axios.get(url, {init})
       .then((res) => {
-        const resBody = JSON.parse(res._bodyText);
+        const resBody = res.data;
         return resBody.items;
       })
-      .catch((error) => console.log(`API threads error: ${error}`));
+      .catch((error) => console.log(`API threads error: ${error.message}`));
     });
   }
 };
