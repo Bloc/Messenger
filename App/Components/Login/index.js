@@ -96,7 +96,7 @@ export default class Login extends Component {
 
     api.setToken(userInfo)
     .then((res) => {
-      if (res.status < 400) {
+      if (res.user) {
         const fullName = `${res.user.first_name} ${res.user.last_name}`;
 
         this.props.navigator.resetTo({
