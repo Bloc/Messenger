@@ -1,6 +1,6 @@
 import React, {Text, TextInput, TouchableHighlight} from 'react-native';
 import {shallow} from 'enzyme';
-import MessageThreads from '../MessageThreads';
+import MessageThreads from './index.js';
 import {expect} from 'chai';
 
 describe('<MessageThreads />', () => {

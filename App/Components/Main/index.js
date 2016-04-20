@@ -2,8 +2,8 @@ import React, {
   PropTypes,
 } from 'react-native';
 
-import Login from './Login';
-import MessageThreads from './MessageThreads';
+import Login from '../Login';
+import MessageThreads from '../MessageThreads';
 import store from 'react-native-simple-store';
 
 export default class Main extends React.Component {

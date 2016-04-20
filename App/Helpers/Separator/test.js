@@ -1,6 +1,6 @@
 import React from 'react-native';
 import {shallow} from 'enzyme';
-import Separator from '../Separator.js';
+import Separator from './index.js';
 import {expect} from 'chai';
 
 describe('<Separator />', () => {
