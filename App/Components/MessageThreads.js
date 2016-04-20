@@ -15,6 +15,7 @@ import api from './../Lib/Api';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     height: 500,
     marginTop: 65,
   },
