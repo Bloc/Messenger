@@ -20,11 +20,15 @@ const api = {
     return axios.post(url).then((res) => {
       const resBody = res.data;
 
-      if (res.status.ok) {
+      if (res.status < 400) {
         store.save('session', {
           token: resBody.auth_token,
           current_user: resBody.user,
         });
+      }
+
+      if (res.status > 400) {
+        throw new Error(`Status ${res.status}: ${res.message}`)
       }
 
       return resBody;
