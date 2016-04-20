@@ -1,4 +1,4 @@
-import squish from '../Squish';
+import squish from './index.js';
 import {expect} from 'chai';
 
 describe('#squish', () => {
