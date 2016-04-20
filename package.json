@@ -9,9 +9,12 @@
     "build": "curl http://localhost:8081/index.ios.bundle -o main.jsbundle"
   },
   "babel": {
-    "presets": ["react-native"]
+    "presets": [
+      "react-native"
+    ]
   },
   "dependencies": {
+    "axios": "^0.9.1",
     "babel-eslint": "^6.0.0",
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.0.2",

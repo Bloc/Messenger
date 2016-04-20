@@ -113,7 +113,7 @@ export default class Login extends Component {
       } else {
         this.handleError(res.message);
       }
- 
+
     })
     .catch((error) => {
       this.handleError(error);
@@ -126,7 +126,7 @@ export default class Login extends Component {
       error: error
     });
   }
-  
+
   render() {
     const _handleSubmit = this.handleSubmit.bind(this);
     const _handleEmailChange = this.handleEmailChange.bind(this);

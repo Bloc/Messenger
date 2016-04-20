@@ -1,6 +1,7 @@
 import store from 'react-native-simple-store';
 import {find} from 'lodash';
 import squish from './Squish';
+import axios from 'axios';
 
 // use localhost:3000 or http://staging.bloc.io/ for testing purposes
 // const apiRoot = 'http://localhost:3000';
@@ -16,8 +17,8 @@ const api = {
       method: 'POST'
     };
 
-    return fetch(url, params).then((res) => {
-      const resBody = JSON.parse(res._bodyText);
+    return axios.post(url).then((res) => {
+      const resBody = res.data;
 
       if (res.status < 400) {
         store.save('session', {
@@ -26,13 +27,17 @@ const api = {
         });
       }
 
+      if (res.status > 400) {
+        throw new Error(`Status ${res.status}: ${res.message}`)
+      }
+
       return resBody;
     })
-    .catch((error) => console.log('token creation failure'));
+    .catch((error) => console.log(`error: ${error.message}`));
   },
 
   sendMessage(id = null, token, text) {
-    store.get('session').then((session) => { //TODO: refactor a performAuthorizedAction function
+    store.get('session').then((session) => {
       const authToken = session.token;
       const user = session.current_user;
       const params = {
@@ -46,7 +51,7 @@ const api = {
 
       fetch(url, params)
       .then((res) => {
-        if (res.status >= 400) { //TODO refactor a generic error handler to display to the user
+        if (res.status >= 400) {
           console.log(res);
         } else {
           console.log("Message Sent. Response on next line.");
@@ -54,7 +59,7 @@ const api = {
         }
       })
       .catch((error) => {
-        console.log(`Send Message error: ${error}`);
+        console.log(`Send Message error: ${error.message}`);
       })
     });
 
@@ -71,13 +76,13 @@ const api = {
         }
       };
 
-      return fetch(url, init)
+      return axios.get(url, init)
       .then((res) => {
-        const items = JSON.parse(res._bodyText).items;
+        const items = res.data.items;
         const messages = find(items, {id: id}).messages;
         return messages;
       })
-      .catch((error) => console.log(`API messages error: ${error}`));
+      .catch((error) => console.log(`API messages error: ${error.message}`));
     });
   },
 
@@ -92,12 +97,12 @@ const api = {
         }
       };
 
-      return fetch(url, init)
+      return axios.get(url, init)
       .then((res) => {
-        const resBody = JSON.parse(res._bodyText);
+        const resBody = res.data;
         return resBody.items;
       })
-      .catch((error) => console.log(`API threads error: ${error}`));
+      .catch((error) => console.log(`API threads error: ${error.message}`));
     });
   }
 };
