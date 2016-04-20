@@ -8,7 +8,7 @@ import React, {
   Component
 } from 'react-native';
 
-import api from './../Lib/Api';
+import api from '../../Lib/Api';
 import store from 'react-native-simple-store';
 
 const styles = StyleSheet.create({

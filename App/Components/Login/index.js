@@ -8,8 +8,8 @@ import React, {
   Component
 } from 'react-native';
 
-import api from './../Lib/Api';
-import MessageThreads from './MessageThreads';
+import api from '../../Lib/Api';
+import MessageThreads from '../MessageThreads';
 
 const styles = StyleSheet.create({
   mainContainer: {

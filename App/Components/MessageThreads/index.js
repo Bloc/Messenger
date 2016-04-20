@@ -9,9 +9,9 @@ import React, {
   Component
 } from 'react-native';
 
-import ViewMessages from './ViewMessages';
-import Separator from './../Helpers/Separator';
-import api from './../Lib/Api';
+import ViewMessages from '../ViewMessages';
+import Separator from '../../Helpers/Separator';
+import api from '../../Lib/Api';
 
 const styles = StyleSheet.create({
   container: {

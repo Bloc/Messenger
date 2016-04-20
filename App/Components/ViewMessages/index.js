@@ -8,9 +8,9 @@ import React, {
   Component
 } from 'react-native';
 
-import api from './../Lib/Api';
+import api from '../../Lib/Api';
 import moment from 'moment';
-import Form from './NewMessageForm';
+import Form from '../NewMessageForm';
 
 const styles = StyleSheet.create({
   container: {

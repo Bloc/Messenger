@@ -1,6 +1,6 @@
 import React, {Text, TextInput, TouchableHighlight} from 'react-native';
 import {shallow} from 'enzyme';
-import NewMessageForm from '../NewMessageForm';
+import NewMessageForm from './index.js';
 import {expect} from 'chai';
 
 describe('<NewMessageForm />', () => {

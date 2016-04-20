@@ -7,7 +7,7 @@ import React, {
   Component
 } from 'react-native';
 
-import Login from './Login';
+import Login from '../Login';
 import store from 'react-native-simple-store';
 
 const styles = StyleSheet.create({
