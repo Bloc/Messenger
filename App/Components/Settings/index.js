@@ -1,4 +1,5 @@
 import React, {
+  Image,
   PropTypes,
   StyleSheet,
   Text,
@@ -14,11 +15,26 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 65
   },
+  button: {
+    backgroundColor: 'red',
+    margin: 40,
+  },
   buttonText: {
-    color: 'red',
+    color: 'white',
     fontSize: 50,
+    padding: 20,
     textAlign: 'center',
-    backgroundColor: '#dcdcdc',
+  },
+  image: {
+    borderRadius: 30,
+    height: 60,
+    marginLeft: 10,
+    marginRight: 15,
+    width: 60,
+  },
+  name: {
+    textAlign: 'center',
+    fontSize: 30,
   },
 });
 
@@ -27,7 +43,7 @@ export default class Settings extends Component {
     super(props);
     this.state = {
       firstName: '',
-      lastName: ''
+      lastName: '',
     };
   }
 
@@ -39,9 +55,10 @@ export default class Settings extends Component {
   componentDidMount() {
     store.get('session').then((res) => {
       if (res) {
+        console.log(res.current_user)
         this.setState({
-          firstName: res.user.first_name,
-          lastName: res.user.last_name,
+          firstName: res.current_user.first_name,
+          lastName: res.current_user.last_name,
         });
       }
     });
@@ -56,13 +73,16 @@ export default class Settings extends Component {
   }
 
   render() {
+    const {firstName, lastName} = this.state;
+    const name = `${firstName} ${lastName}`;
     const _logout = this.logOut.bind(this);
 
     return (
       <View style={styles.container}>
-        <TouchableHighlight onPress={_logout}>
+        <TouchableHighlight style={styles.button} onPress={_logout}>
           <Text style={styles.buttonText} > Log Out </Text>
         </TouchableHighlight>
+        <Text style={styles.name} >{name}</Text>
       </View>
     );
   }
