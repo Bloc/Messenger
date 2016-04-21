@@ -12,22 +12,23 @@ const api = {
   setToken(userInfo) {
     const email = userInfo.email.toLowerCase().trim();
     const password = userInfo.password.toLowerCase().trim();
-    const url = `${apiRoot}/api/v1/sessions?email=${email}&password=${password}`;
+    const url = `${apiRoot}/api/v1/sessions`;
     const params = {
-      method: 'POST'
+      email: `${email}`,
+      password: `${password}`
     };
 
-    return axios.post(url).then((res) => {
+    return axios.post(url, params).then((res) => {
       const resBody = res.data;
 
-      if (res.status < 400) {
+      if (res.status >= 200 && res.status < 300) {
         store.save('session', {
           token: resBody.auth_token,
           current_user: resBody.user,
         });
       }
 
-      if (res.status > 400) {
+      if (res.status < 200 && res.status >= 300) {
         throw new Error(`Status ${res.status}: ${res.message}`)
       }
 
