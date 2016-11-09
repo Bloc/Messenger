@@ -1,12 +1,10 @@
-import React, {
-  PropTypes,
-} from 'react-native';
+import React, {PropTypes, Component} from 'react';
 
 import Login from '../Login';
 import MessageThreads from '../MessageThreads';
 import store from 'react-native-simple-store';
 
-export default class Main extends React.Component {
+export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {

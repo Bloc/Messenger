@@ -1,12 +1,11 @@
-import React, {
+import React, {PropTypes, Component} from "react";
+import {
   Image,
   ListView,
-  PropTypes,
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
-  Component
+  View
 } from 'react-native';
 
 import ViewMessages from '../ViewMessages';

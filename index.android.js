@@ -1,17 +1,18 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
+ * @flow
  */
-'use strict';
-import React, {
+
+import React, { Component } from 'react';
+import {
   AppRegistry,
-  Component,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-class BlocMessenger extends Component {
+export default class Messenger extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -22,6 +23,7 @@ class BlocMessenger extends Component {
           To get started, edit index.android.js
         </Text>
         <Text style={styles.instructions}>
+          Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
       </View>
@@ -48,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('BlocMessenger', () => BlocMessenger);
+AppRegistry.registerComponent('Messenger', () => Messenger);

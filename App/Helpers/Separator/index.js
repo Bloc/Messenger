@@ -1,7 +1,7 @@
-import React, {
+import React, {Component} from "react";
+import {
   View,
-  StyleSheet,
-  Component
+  StyleSheet
 } from 'react-native';
 
 const styles = StyleSheet.create({

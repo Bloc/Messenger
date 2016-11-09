@@ -1,6 +1,6 @@
-import React, {
+import React, {Component} from "react";
+import {
   AppRegistry,
-  Component,
   NavigatorIOS,
   StyleSheet
 } from 'react-native';
@@ -8,7 +8,7 @@ import React, {
 import Main from './App/Components/Main';
 import Settings from './App/Components/Settings';
 
-class BlocMessenger extends Component {
+class Messenger extends Component {
   goToSettings() {
     this.refs.nav.push({
       component: Settings,
@@ -38,4 +38,5 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('BlocMessenger', () => BlocMessenger);
+AppRegistry.registerComponent('Messenger', () => Messenger);
+

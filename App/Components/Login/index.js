@@ -1,11 +1,10 @@
-import React, {
-  PropTypes,
+import React, {PropTypes, Component} from "react";
+import {
   StyleSheet,
   Text,
   TextInput,
   TouchableHighlight,
   View,
-  Component
 } from 'react-native';
 
 import api from '../../Lib/Api';
