@@ -1,11 +1,10 @@
-import React, {
+import React, {PropTypes, Component} from "react";
+import {
   Image,
   ListView,
-  PropTypes,
   Text,
   View,
   StyleSheet,
-  Component
 } from 'react-native';
 
 import api from '../../Lib/Api';

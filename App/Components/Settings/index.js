@@ -1,11 +1,10 @@
-import React, {
+import React, {PropTypes, Component} from "react";
+import {
   Image,
-  PropTypes,
   StyleSheet,
   Text,
   TouchableHighlight,
-  View,
-  Component
+  View
 } from 'react-native';
 
 import Login from '../Login';
