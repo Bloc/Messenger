@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View,
+  View
 } from 'react-native';
 
 import api from '../../Lib/Api';
@@ -65,6 +65,9 @@ export default class Login extends Component {
       isLoading: false,
       error: false
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   static propTypes = {
@@ -95,6 +98,7 @@ export default class Login extends Component {
 
     api.setToken(userInfo)
     .then((res) => {
+      console.log(res);
       if (res.user) {
         const fullName = `${res.user.first_name} ${res.user.last_name}`;
 
@@ -127,9 +131,6 @@ export default class Login extends Component {
   }
 
   render() {
-    const _handleSubmit = this.handleSubmit.bind(this);
-    const _handleEmailChange = this.handleEmailChange.bind(this);
-    const _handlePasswordChange = this.handlePasswordChange.bind(this);
     const showErr = (
       this.state.error ? <Text> {this.state.error} </Text> : <View />
     );
@@ -142,7 +143,7 @@ export default class Login extends Component {
             autoCorrect={false}
             placeholder='Email'
             autoCapitalize='none'
-            onChange={_handleEmailChange}
+            onChange={this.handleEmailChange}
           />
           <TextInput
             style={styles.searchInput}
@@ -151,11 +152,11 @@ export default class Login extends Component {
             autoCorrect={false}
             autoCapitalize='none'
             placeholder='Password'
-            onChange={_handlePasswordChange}
+            onChange={this.handlePasswordChange}
           />
           <TouchableHighlight
             style={styles.button}
-            onPress={_handleSubmit}
+            onPress={this.handleSubmit}
             underlayColor='white'
           >
             <Text style={styles.buttonText}> LOGIN </Text>
