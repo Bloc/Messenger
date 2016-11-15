@@ -2,7 +2,6 @@ import React from 'react';
 import ReactNative, {Text, TextInput, TouchableHighlight} from 'react-native';
 import {shallow} from 'enzyme';
 import Main from './index.js';
-import {expect} from 'chai';
 
 describe('<Main />', () => {
   it('should render Main component', () => {
