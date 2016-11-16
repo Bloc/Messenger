@@ -1,3 +1,0 @@
---require ./test/testHelper.js
---compilers js:babel-core/register
---recursive App/**/**/test.js

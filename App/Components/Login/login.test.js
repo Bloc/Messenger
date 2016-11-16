@@ -1,13 +1,13 @@
-import React, {Text, TextInput, TouchableHighlight} from 'react-native';
+import React from 'react';
+import ReactNative, {Text, TextInput, TouchableHighlight} from 'react-native';
 import {shallow} from 'enzyme';
 import Login from './index.js';
-import {expect} from 'chai';
 
 describe('<Login />', () => {
   it('should render text for Login', () => {
     const component = shallow(<Login />);
     const text = component.find(Text).node.props.children;
-    expect(text).to.eq(' Login using your Bloc.io email and password');
+    expect(text).toBe(' Login using your Bloc.io email and password');
   });
 
   it('populates email field', () => {
@@ -22,12 +22,12 @@ describe('<Login />', () => {
     expect(component.contains(<TextInput value='top_secret' />));
   });
 
-  xit('form renders 2nd text for error when submited without info', () => {
+  it('form renders 2nd text for error when submited without info', () => {
     const component = shallow(<Login />);
     button = component.find(TouchableHighlight);
     button.simulate('click');
 
     const text = component.find(Text);
-    expect(text.length).to.equal(2);
+    expect(text.length).toBe(2);
   });
 });

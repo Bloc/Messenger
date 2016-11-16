@@ -20,7 +20,6 @@ const api = {
 
     return axios.post(url, params).then((res) => {
       const resBody = res.data;
-
       if (res.status >= 200 && res.status < 300) {
         store.save('session', {
           token: resBody.auth_token,
@@ -29,6 +28,7 @@ const api = {
       }
 
       if (res.status < 200 && res.status >= 300) {
+        console.log(res);
         throw new Error(`Status ${res.status}: ${res.message}`)
       }
 

@@ -35,8 +35,12 @@
  ![sample image](http://i.imgur.com/xVetwhwm.png)
  
  ## Tests
+ Tests are using [Jest](https://facebook.github.io/jest/).
  
- ### In Progress...
+ Run tests with:
+ ```
+ $ npm test
+ ```
  
  ## Linting
  
