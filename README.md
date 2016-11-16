@@ -23,7 +23,7 @@
  
  ```
  $ npm install react-native-cli -g
- $ npm install 
+ $ yarn install 
  ```
  
  ## Start the Simulator
