@@ -11,7 +11,7 @@ const apiRoot = 'https://www.bloc.io';
 const api = {
   setToken(userInfo) {
     const email = userInfo.email.toLowerCase().trim();
-    const password = userInfo.password.toLowerCase().trim();
+    const password = userInfo.password.trim();
     const url = `${apiRoot}/api/v1/sessions`;
     const params = {
       email: `${email}`,
