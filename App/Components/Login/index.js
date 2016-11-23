@@ -63,7 +63,7 @@ export default class Login extends Component {
       email: '',
       password: '',
       isLoading: false,
-      error: false
+      error: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -98,7 +98,6 @@ export default class Login extends Component {
 
     api.setToken(userInfo)
     .then((res) => {
-      console.log(res);
       if (res.user) {
         const fullName = `${res.user.first_name} ${res.user.last_name}`;
 
@@ -114,7 +113,7 @@ export default class Login extends Component {
           password: '',
         });
       } else {
-        this.handleError(res.message);
+        this.handleError(res);
       }
 
     })
@@ -126,7 +125,7 @@ export default class Login extends Component {
   handleError(error) {
     this.setState({
       isLoading: false,
-      error: error
+      error: error.message
     });
   }
 
