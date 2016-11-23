@@ -28,13 +28,11 @@ const api = {
       }
 
       if (res.status < 200 && res.status >= 300) {
-        console.log(res);
-        throw new Error(`Status ${res.status}: ${res.message}`)
+        return {message: `Error ${res.status}: Login was unsucessful.`}
       }
-
       return resBody;
     })
-    .catch((error) => console.log(`error: ${error.message}`));
+    .catch((error) => {return {message: "Login was unsuccessful, check password or email and try again."}});
   },
 
   sendMessage(id = null, token, text) {
