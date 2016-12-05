@@ -17,7 +17,7 @@
 		"lodash": "^4.16.6",
 		"moment": "^2.15.2",
 		"react": "~15.3.1",
-		"react-native": "0.37.0",
+		"react-native": "0.39.0",
 		"react-native-simple-store": "^1.1.0"
 	},
 	"devDependencies": {
