@@ -19,7 +19,8 @@
  required dependencies:
  - npm 3 or greater
  - node 4.1 or greater
- - Xcode 8
+ - [Xcode 8](https://itunes.apple.com/us/app/xcode/id497799835?mt=12) or greater 
+ - [Android Studio](https://developer.android.com/studio/index.html) *[Setup](https://medium.com/@deepak.gulati/running-react-native-app-on-the-android-emulator-11bf309443eb#.v0ym11uhg)*
  
  ```
  $ npm install react-native-cli -g
@@ -30,6 +31,7 @@
  
  ```
  $ react-native run-ios
+ $ react-native run-android
  ```
  
  ![sample image](http://i.imgur.com/xVetwhwm.png)
