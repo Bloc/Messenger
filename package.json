@@ -16,8 +16,8 @@
 		"eslint-plugin-react-native": "^2.0.0",
 		"lodash": "^4.16.6",
 		"moment": "^2.15.2",
-		"react": "~15.3.1",
-		"react-native": "0.39.0",
+		"react": "~15.4.0-rc.4",
+		"react-native": "0.41.0",
 		"react-native-simple-store": "^1.1.0"
 	},
 	"devDependencies": {
