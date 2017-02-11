@@ -1,41 +1,42 @@
 {
-	"name": "Messenger",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-		"axios": "^0.15.2",
-		"babel-eslint": "^7.1.0",
-		"eslint": "^3.9.1",
-		"eslint-config-airbnb": "^13.0.0",
-		"eslint-plugin-import": "^2.2.0",
-		"eslint-plugin-react": "^6.6.0",
-		"eslint-plugin-react-native": "^2.0.0",
-		"lodash": "^4.16.6",
-		"moment": "^2.15.2",
-		"react": "~15.3.1",
-		"react-native": "0.39.0",
-		"react-native-simple-store": "^1.1.0"
-	},
-	"devDependencies": {
-		"babel-core": "^6.18.2",
-		"babel-jest": "17.0.0",
-		"babel-polyfill": "^6.16.0",
-		"babel-preset-react-native": "^1.9.0",
-		"chai": "^3.5.0",
-		"enzyme": "^2.5.1",
-		"jest": "17.0.0",
-		"jest-react-native": "17.0.0",
-		"react": "^15.3.2",
-		"react-addons-test-utils": "^15.3.2",
-		"react-dom": "^15.3.2",
-		"react-native-mock": "^0.2.7",
-		"react-test-renderer": "~15.3.1"
-	},
-	"jest": {
-		"preset": "jest-react-native"
-	}
+  "name": "Messenger",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.6.0",
+    "eslint-plugin-react-native": "^2.0.0",
+    "lodash": "^4.16.6",
+    "moment": "^2.15.2",
+    "react": "~15.3.1",
+    "react-native": "0.39.0",
+    "react-native-simple-store": "^1.1.0",
+    "react-transmit": "3.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-jest": "17.0.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-react-native": "^1.9.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.5.1",
+    "jest": "17.0.0",
+    "jest-react-native": "17.0.0",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-native-mock": "^0.2.7",
+    "react-test-renderer": "~15.3.1"
+  },
+  "jest": {
+    "preset": "jest-react-native"
+  }
 }

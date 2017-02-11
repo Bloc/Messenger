@@ -11,6 +11,7 @@ import {
 import ViewMessages from '../ViewMessages';
 import Separator from '../../Helpers/Separator';
 import api from '../../Lib/Api';
+import {createContainer} from 'react-transmit';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class MessageThreads extends Component {
+class MessageThreads extends Component {
   constructor(props) {
     super(props);
 
@@ -59,25 +60,12 @@ export default class MessageThreads extends Component {
       dataSource: this.ds,
       threadId: '',
     };
+    this.renderRow = this.renderRow.bind(this);
   }
 
   static propTypes = {
     navigator: PropTypes.object,
   };
-
-  componentDidMount() {
-    this.fetchThreads();
-  }
-
-  fetchThreads() {
-    api.getMessageThreads()
-    .then((data) => {
-      this.setState({
-        dataSource: this.ds.cloneWithRows(data),
-      });
-    })
-    .catch((error) => console.log(`error: ${error}`));
-  }
 
   viewMessages(rowData) {
     this.props.navigator.push({
@@ -116,15 +104,20 @@ export default class MessageThreads extends Component {
   }
 
   render() {
-    const row = this.renderRow.bind(this);
-
     return (
       <View style={styles.container}>
         <ListView
-          dataSource={this.state.dataSource}
-          renderRow={row}
+          dataSource={this.ds.cloneWithRows(this.props.messages)}
+          renderRow={this.renderRow}
         />
       </View>
     );
   }
 }
+
+export default createContainer(MessageThreads, {
+  initialVariables: {},
+  fragments: {
+    messages: () => api.getMessageThreads().then(res => res),
+  }
+});
