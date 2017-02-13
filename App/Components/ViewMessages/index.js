@@ -10,6 +10,9 @@ import {
 import api from '../../Lib/Api';
 import moment from 'moment';
 import Form from '../NewMessageForm';
+// import {createContainer} from 'react-transmit';
+import { resolve } from "react-resolver";
+
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +53,10 @@ const styles = StyleSheet.create({
   },
 });
 
+@resolve("messageData", (props) => {
+  return api.getMessagesForThread(prop.id).then(res => res);
+})
+
 export default class ViewMessage extends Component {
   constructor(props) {
     super(props);
@@ -67,6 +74,7 @@ export default class ViewMessage extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props)
     const {id} = this.props;
     this.fetchMessages(id);
   }
@@ -106,6 +114,7 @@ export default class ViewMessage extends Component {
 
   render() {
     const {id, token} = this.props;
+    console.log(this.props)
 
     return (
       <View style={styles.container}>
@@ -118,3 +127,12 @@ export default class ViewMessage extends Component {
     );
   }
 }
+
+// export default createContainer(ViewMessage, {
+//   initialVariables: {},
+//   fragments: {
+//     messages({id}) {
+//       return api.getMessagesForThread(id).then(res => res);
+//     }
+//   }
+// });

@@ -1,3 +1,6 @@
 {
-  "presets": ["react-native"]
+  "presets": ["react-native", "stage-2"],
+  "plugins": [
+    "transform-decorators"
+  ]
 }
