@@ -1,3 +1,5 @@
+This proejct is deprecated and will not be maintained. Feel free to fork and upgrade. - bdougie
+ 
  [![GitHub issues](https://img.shields.io/github/issues/Bloc/Messenger.svg)](https://github.com/Bloc/Messenger/issues)
  
 # Bloc Messenger
